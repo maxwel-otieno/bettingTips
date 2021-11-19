@@ -39,6 +39,9 @@
     <link rel="stylesheet" href="fonts/icomoon/style.css">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -82,7 +85,7 @@
                             <a href="./tips.php" class="nav-link scroll-link">Tips</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./livescore.php" class="nav-link scroll-link">Livescore</a>
+                            <a href="./livescore.php" style="color:brown;" class="nav-link scroll-link">Livescore</a>
                         </li>
                         <li class="nav-item">
                             <a href="#about" class="nav-link scroll-link">About</a>
@@ -141,7 +144,7 @@
             
 
             // $APIkey='090ec463449a0632e9e54bd8a58f66bcf89cad3cb2d4144443dc59534f405c81';
-            $APIkey= $row_api->api_key;
+            // $APIkey= $row_api->api_key;
             // $APIkey = "090ec463449a0632e9e54bd8a58f66bcf89cad3cb2d4144443dc59534f405c81";
             // $from = '2021-07-12';
             // $to = '2021-07-12';
@@ -161,11 +164,32 @@
             // var_dump($country_result[0]->team_name);
 
 
-            echo "<div class='container'><br><h1 style='color: red;'> EPL Standings</h1><table class='table table-responsive-sm'><thead style='color:white;'><th>Team</th><th>P</th><th>MP</th><th style='min=width:100px;'>Stats( W D L )</thead><tbody>";
-            for($a = 0; $a<sizeof($country_result); $a++){
-                echo "<tr style='color:white;'><td class='text-white'>".($a+1)." . ".$country_result[$a]->team_name."</td>   <td class='text-red'>".$country_result[$a]->overall_league_PTS."</td> <td>".$country_result[$a]->overall_league_payed."</td> <td style='min-width:30vh;'><span class='p-2 px-2 text-white'>".$country_result[$a]->overall_league_W."</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class='p-3 text-white'>".$country_result[$a]->overall_league_D."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class='p-2 text-white'>".$country_result[$a]->overall_league_L."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
-            };
-            // echo "</table></div>";
+            // $APIkey='090ec463449a0632e9e54bd8a58f66bcf89cad3cb2d4144443dc59534f405c81';
+            $APIkey= $row_api->api_key;
+            // $APIkey = "090ec463449a0632e9e54bd8a58f66bcf89cad3cb2d4144443dc59534f405c81";
+            // $from = '2021-07-12';
+            // $to = '2021-07-12';
+            $league_id = 300;
+            $curl_options = array(
+            // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
+            CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_standings&league_id=302&APIkey=$APIkey",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HEADER => false,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_CONNECTTIMEOUT => 5
+            );
+            $curl_laliga = curl_init();
+            curl_setopt_array( $curl_laliga, $curl_options );
+            $laliga_result = curl_exec( $curl_laliga );
+            $laliga_result = (array) json_decode($laliga_result);
+            // var_dump($laliga_result[0]);
+
+
+            // echo "<div class='container'><br><h1 style='color: red;'> EPL Standings</h1><table class='table table-responsive-sm'><thead style='color:white;'><th>Team</th><th>P</th><th>MP</th><th style='min=width:100px;'>Stats( W D L )</thead><tbody>";
+            // for($a = 0; $a<sizeof($country_result); $a++){
+            //     echo "<tr style='color:white;'><td class='text-white'>".($a+1)." . ".$country_result[$a]->team_name."</td>   <td class='text-red'>".$country_result[$a]->overall_league_PTS."</td> <td>".$country_result[$a]->overall_league_payed."</td> <td style='min-width:30vh;'><span class='p-2 px-2 text-white'>".$country_result[$a]->overall_league_W."</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class='p-3 text-white'>".$country_result[$a]->overall_league_D."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class='p-2 text-white'>".$country_result[$a]->overall_league_L."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+            // };
+            // echo "</tbody></table></div>";
 
 
             // echo $all_users->rowCount();?>
@@ -174,7 +198,9 @@
 
     <div style="min-height: 200px; margin-bottom: 100px;" class="mt-5">
         <div class="container">
-            <h2 class="text-white">Live Results</h2>
+            <div class="d-flex justify-content-center section sectionToMin" style="overflow: auto;">
+                <span><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" style="text-decoration: none; color: red;" id="mySection">Today</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3></span>|<span><h2 class="text-white" id="mySection">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yesterday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2></span>|<span><h2 class="text-white" id="mySection">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tomorrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2></span>|<span><h2 class="text-white" id="mySection">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Live</h2></span>
+            </div>
             <div class="row">
                 <div class="col-md-3 pt-5" id="notShow">
                     <!-- <div style="height: 200px; margin-top: 50px;"><img src="./images/messi_bt2.jpg" alt="bettingtips.com"></div>
@@ -188,30 +214,42 @@
                         }
                     ?>
                 </div>
-                <div class="col-md-9">               
+                <div class="col-md-5">               
                     <div class="section sectionToMin" id="mySection">
                         <?php             
                             for($i=0; $i<sizeof($result)-155; $i++){
+                                if($i == 6){
+                                    echo "<!-- Another Advert -->
+                                    <br><br><div class='d-flex justify-content-center' style='margin:auto;'><a href='https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152'; target='_blank' rel='nofollow'><img src='https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/' alt='' /></a></div>   <br><br>   <br> ";
+                                }
                                 // echo $result[$i]->country_name."<br>";?>
-                        <h1 style="color: green;"><?php echo $result[$i]->country_name;?></h1><br>
+                        <h1 style="color: brown;"><?php echo $result[$i]->country_name;?></h1><br>
                         <table class="table text-white">
                             <thead>
-                                <th style="padding: 10px 20px;">League</th>
-                                <th style="padding: 10px 20px;">Match</th>
+                                <!-- <th style="padding: 10px 20px;">League</th> -->
                                 <th style="padding: 10px 20px;">Time</th>
-                                <th style="padding: 10px 20px;">Odds</th>
-                                <th style="padding: 10px 20px;">Tip</th>
+                                <th style="padding: 10px 20px;">Match</th>
+                                <th style="padding: 10px 20px;">Score</th>
+                                <th style="padding: 10px 20px;"></th>
                                 <th></th>
                             </thead>
 
                             <tbody>
                                 <tr class="text-white">
-                                    <td style="padding-top: 20px;">English Premier League</td>
-                                    <td style="padding-top: 20px;">Juventus - Chelsea</td>
+                                    <!-- <td style="padding-top: 20px;">English Premier League</td> -->
                                     <td style="padding-top: 20px;">20:00</td>
-                                    <td style="padding-top: 20px;">2.00 | 3.15 | 2.80</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
+                                    <td style="padding-top: 20px;">Juventus - Chelsea</td>
+                                    <td style="padding-top: 20px;"> _ - _</td>
+                                    <!-- <td style="padding-top: 20px;"><h1>H</h1></td> -->
+                                    <td class="text-center;" style="padding-top: 20px;"><i id="myId" class="fa fa-star-o fa-2x" aria-hidden="true" onclick="myFunction1('myId')"></i></td>
+                                </tr>
+                                <tr class="text-white">
+                                    <!-- <td style="padding-top: 20px;">English Premier League</td> -->
+                                    <td style="padding-top: 20px; color: #CE2B37;">88'</td>
+                                    <td style="padding-top: 20px;">Kenya - S Sudan</td>
+                                    <td style="padding-top: 20px;"> 4 - 2</td>
+                                    <!-- <td style="padding-top: 20px;"><h1>H</h1></td> -->
+                                    <td class="text-center;" style="padding-top: 20px; color: #ffef00;"><i id="toChangeId" class="fa fa-star fa-2x" aria-hidden="true" onclick="myFunction1('toChangeId')"></i></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -219,130 +257,48 @@
                             }
                         ?>
                     </div>       <!--Current odds preview section end --> 
+                    <script>
+                        function myFunction1(id){
+                            const icon = document.getElementById(id);
+                            // console.log(icon.classList);
+                            if (icon.classList.contains("fa-star")){
+                                icon.classList.remove("fa-star");
+                                icon.classList.add("fa-star-o");
+                                icon.style.color = '#fff';
+                                console.log('A');
+                            }else if (icon.classList.contains("fa-star-o")){
+                                icon.classList.remove("fa-star-o");
+                                icon.classList.add("fa-star");
+                                icon.style.color = '#ffef00';
+                                console.log('B');
+                            }else{
+                                console.log('C');
+                            }
+                        }
+                    </script>
 
                     <!-- Another Advert -->
                     <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>    
 
-                    <!-- Premium Odds -->
-                    <div class="section sectionToMin">
-                        <h1 style="color: green;">Premium Odds</h1><br>
-                        <table class="table table-striped text-white">
-                            <thead>
-                                <th id="toClose" style="padding: 10px 0px;">League</th>
-                                <th style="padding: 10px 0px;">Match</th>
-                                <th style="padding: 10px 0px;">Time</th>
-                                <th style="padding: 10px 0px;">Odds</th>
-                                <th style="padding: 10px 0px;">Tip</th>
-                                <!-- <th></th> -->
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">English Premier League</td>
-                                    <td style="padding-top: 20px;">Juventus - Chelsea</td>
-                                    <td style="padding-top: 20px;">20:00</td>
-                                    <td style="padding-top: 20px;">2.00 | 3.15 | 2.80</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Othaya Youth League</td>
-                                    <td style="padding-top: 20px;">Cumbaya FC - Chacaritas FC</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>D</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">UEFA Champions League</td>
-                                    <td style="padding-top: 20px;">Bayern Munich - Dynamo Kyiv</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Champions League</td>
-                                    <td style="padding-top: 20px;">Benfica - Barcelona</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>A</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">English Premier League</td>
-                                    <td style="padding-top: 20px;">Juventus - Chelsea</td>
-                                    <td style="padding-top: 20px;">20:00</td>
-                                    <td style="padding-top: 20px;">2.00 | 3.15 | 2.80</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Othaya Youth League</td>
-                                    <td style="padding-top: 20px;">Cumbaya FC - Chacaritas FC</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>D</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">UEFA Champions League</td>
-                                    <td style="padding-top: 20px;">Bayern Munich - Dynamo Kyiv</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Champions League</td>
-                                    <td style="padding-top: 20px;">Benfica - Barcelona</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>A</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">English Premier League</td>
-                                    <td style="padding-top: 20px;">Juventus - Chelsea</td>
-                                    <td style="padding-top: 20px;">20:00</td>
-                                    <td style="padding-top: 20px;">2.00 | 3.15 | 2.80</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Othaya Youth League</td>
-                                    <td style="padding-top: 20px;">Cumbaya FC - Chacaritas FC</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>D</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">UEFA Champions League</td>
-                                    <td style="padding-top: 20px;">Bayern Munich - Dynamo Kyiv</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Champions League</td>
-                                    <td style="padding-top: 20px;">Benfica - Barcelona</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>A</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>   
-
                     <!-- Another Advert -->
-                    <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>      <br> 
-
-                    <!-- Another Advert -->
-                    <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>  
+                    <!-- <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>   -->
                 </div>     
+                <div class="col-md-4">
+                    <?php
+                        echo "<div class='container mt-5 pt-5'><br><h3 style='color: #C3C3C3;'> EPL Standings</h3><table class='table'><tbody>";
+                        for($a = 0; $a<sizeof($country_result)-15; $a++){
+                            echo "<tr style='color:white;'><td class='text-white'><img src='".$country_result[$a]->team_badge."' alt='img here' style='width:10%;'></img>&nbsp;&nbsp;&nbsp;&nbsp;".$country_result[$a]->team_name."</td>   <td class='text-red'>".$country_result[$a]->overall_league_PTS."</td><td style='min-width:30vh;'><span class='p-2 px-2 text-white'>".$country_result[$a]->overall_league_W."</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class='p-3 text-white'>".$country_result[$a]->overall_league_D."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class='p-2 text-white'>".$country_result[$a]->overall_league_L."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+                        };
+                        echo "</tbody></table></div>";
+
+                        echo "<br><br>";
+                        echo "<div class='container mt-5 pt-5'><br><h3 style='color: #C3C3C3;'> Laliga Standings</h3><table class='table'><tbody>";
+                        for($a = 0; $a<sizeof($laliga_result)-15; $a++){
+                            echo "<tr style='color:white;'><td class='text-white'><img src='".$laliga_result[$a]->team_badge."' alt='img here' style='width:10%;'></img>&nbsp;&nbsp;&nbsp;&nbsp;".$laliga_result[$a]->team_name."</td>   <td>".$laliga_result[$a]->overall_league_PTS."</td><td style='min-width:30vh;'><span class='p-2 px-2 text-white'>".$laliga_result[$a]->overall_league_W."</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class='p-3 text-white'>".$laliga_result[$a]->overall_league_D."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class='p-2 text-white'>".$laliga_result[$a]->overall_league_L."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+                        };
+                        echo "</tbody></table></div>";
+                    ?>
+                </div>
             </div>
         </div>
         <!-- <iframe scrolling="no" id="hearthis_at_track_4535954" width="100%" height="150" src="https://app.hearthis.at/embed/4535954/transparent_black/?hcolor=&color=&style=2&block_size=2&block_space=1&background=1&waveform=0&cover=0&autoplay=1&css=" frameborder="0" allowtransparency allow="autoplay"><p>Listen to <a href="https://hearthis.at/ty7cpt3h/new-school-poprb/" target="_blank">New School Pop &amp; R&amp;B (2013 - 2019)</a> <span>by</span><a href="https://hearthis.at/ty7cpt3h/" target="_blank" >DJ KenB</a> <span>on</span> <a href="https://hearthis.at/" target="_blank">hearthis.at</a></p></iframe> -->

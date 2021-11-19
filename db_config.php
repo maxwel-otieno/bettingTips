@@ -18,19 +18,39 @@ try {
     echo "Connection failed: " . $e->getMessage()."<br>";
   }
 
+  //limit the number of rows returned
+  $limit = 15;
+  if (isset($_GET['page'])){
+  $pn = $_GET['page'];
+  }else{
+  $pn =1;
+  }
+  $start_from = (($pn-1)*$limit);
+
+  $query = "SELECT * FROM activity_log ORDER BY id DESC LIMIT $start_from, $limit";
+  $stmt = $pdo->prepare($query);
+  $stmt->execute();
+  $row = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+  #Website Name
+  $site_name = 'Bet3ways.com';
+
+
   $all_users = $pdo->prepare("SELECT * FROM db_user");
   $all_users->execute();
 
+  //one user
+  $one_user = $pdo->prepare('SELECT * FROM db_user WHERE id=1');
+  $one_user->execute();
+  $row_one = $one_user->fetch(PDO::FETCH_OBJ);
+
+  // fetch api from db
   $get_api = $pdo->prepare("SELECT * FROM api");
   $get_api->execute();
   $row_api = $get_api->fetch(PDO::FETCH_OBJ);
 
   //fetch specific user info
   $get_user = $pdo->prepare('SELECT * FROM db_user WHERE username = ? AND password=?');
-
-  //activity log
-  $get_activity = $pdo->prepare("SELECT * FROM activity_log ORDER BY `time` DESC");
-  $get_activity->execute();
 
   //LIMIT logs for notifications
   $notif_activity = $pdo->prepare("SELECT * FROM activity_log WHERE (`activity` != 'Login' OR `activity` != 'Logout') ORDER BY `time` DESC LIMIT 5");

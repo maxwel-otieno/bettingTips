@@ -2,6 +2,10 @@
 session_start();
 include '../db_config.php';
 
+if(!isset($_SESSION['username'])){
+  header('location: ../login.php');
+}
+
 $Err = "";
 
 if(isset($_GET['change_key'])){
@@ -38,7 +42,7 @@ if(isset($_GET['change_key'])){
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          BettingTips
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -127,13 +131,17 @@ if(isset($_GET['change_key'])){
                   <a class="dropdown-item" href="javascript:void(0)">Another One</a> -->
                 </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="javascript:void(0)" id="userDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
                     Account
                   </p>
                 </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdownMenuLink">
+                  <a class="dropdown-item" href="setting.php"><i class="material-icons">settings</i>&nbsp;&nbsp;Settings</a>
+                  <a class="dropdown-item" href="logout.php"><i class="material-icons">logout</i>&nbsp;&nbsp;Loguot</a>
+                </div>
               </li>
             </ul>
           </div>
@@ -142,9 +150,77 @@ if(isset($_GET['change_key'])){
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
+          
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-primary card-header-icon">
+                  <div class="card-icon">
+                    <i class="fa fa-users"></i>
+                  </div>
+                  <p class="card-category">Users</p>
+                  <h3 class="card-title"><?php echo $all_users->rowCount();?></h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">update</i> Just Updated
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">phone_android</i>
+                  </div>
+                  <p class="card-category">Subscriptions Today</p>
+                  <h3 class="card-title">10</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons text-success fa-2x">arrow_upward</i>
+                    <!-- <a href="#pablo" class="warning-link">Get More Space...</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">store</i>
+                  </div>
+                  <p class="card-category">Revenue</p>
+                  <h3 class="card-title">$34,245</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">date_range</i> Last 24 Hours
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">info_outline</i>
+                  </div>
+                  <p class="card-category">Fixed Issues</p>
+                  <h3 class="card-title">75</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">local_offer</i> Tracked from Github
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div class="container">
-            <h1>All Users</h1><br><br>
+            <h1 class="text-white">All Users</h1><br><br>
               <table class="table table-hover table-striped">
                 <thead>
                   <th></th>

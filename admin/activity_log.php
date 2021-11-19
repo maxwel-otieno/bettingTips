@@ -1,5 +1,10 @@
 <?php
 include '../db_config.php';
+session_start();
+
+if(!isset($_SESSION['username'])){
+  header('location: ../login.php');
+}
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +37,7 @@ include '../db_config.php';
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          BettingTips
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -128,20 +133,30 @@ include '../db_config.php';
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a>
+                  
+                <?php
+                  foreach($row_notif as $notif){
+                    echo "<a class='dropdown-item' href='javascript:void(0)'>".$notif->activity_desc."</a>";
+                  }
+                    ?>
+                  <!-- <a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a>
                   <a class="dropdown-item" href="javascript:void(0)">You have 5 new tasks</a>
                   <a class="dropdown-item" href="javascript:void(0)">You're now friend with Andrew</a>
                   <a class="dropdown-item" href="javascript:void(0)">Another Notification</a>
-                  <a class="dropdown-item" href="javascript:void(0)">Another One</a>
+                  <a class="dropdown-item" href="javascript:void(0)">Another One</a> -->
                 </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="javascript:void(0)" id="userDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
                     Account
                   </p>
                 </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdownMenuLink">
+                  <a class="dropdown-item" href="setting.php"><i class="material-icons">settings</i>&nbsp;&nbsp;Settings</a>
+                  <a class="dropdown-item" href="logout.php"><i class="material-icons">logout</i>&nbsp;&nbsp;Loguot</a>
+                </div>
               </li>
             </ul>
           </div>
@@ -150,22 +165,20 @@ include '../db_config.php';
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          <div class="row">
+          
+        <div class="row">
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
               <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
+                <div class="card-header card-header-primary card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">content_copy</i>
+                    <i class="fa fa-users"></i>
                   </div>
-                  <p class="card-category">Used Space</p>
-                  <h3 class="card-title">49/50
-                    <small>GB</small>
-                  </h3>
+                  <p class="card-category">Users</p>
+                  <h3 class="card-title"><?php echo $all_users->rowCount();?></h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons text-warning">warning</i>
-                    <a href="#pablo" class="warning-link">Get More Space...</a>
+                    <i class="material-icons">update</i> Just Updated
                   </div>
                 </div>
               </div>
@@ -173,6 +186,23 @@ include '../db_config.php';
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">phone_android</i>
+                  </div>
+                  <p class="card-category">Subscriptions Today</p>
+                  <h3 class="card-title">10</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons text-success fa-2x">arrow_upward</i>
+                    <!-- <a href="#pablo" class="warning-link">Get More Space...</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
                   <div class="card-icon">
                     <i class="material-icons">store</i>
                   </div>
@@ -202,29 +232,9 @@ include '../db_config.php';
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-info card-header-icon">
-                  <div class="card-icon">
-                    <i class="fa fa-twitter"></i>
-                  </div>
-                  <p class="card-category">Users</p>
-                  <h3 class="card-title"><?php echo $all_users->rowCount();?></h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">update</i> Just Updated
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
           <div id="toAlert"></div>
           <div>
-              <?php
-                $row_activity = $get_activity->fetchAll(PDO::FETCH_OBJ);
-                // print_r($row_activity);
-              ?>
             <table class="table table-mini table-default">
               <thead>
                   <th>#</th>
@@ -235,7 +245,7 @@ include '../db_config.php';
               </thead>
               <tbody>
                   <?php
-                  foreach($row_activity as $activity){
+                  foreach($row as $activity){
                       $date = date("d M", strtotime($activity->time));
                         $time = date("h:i a", strtotime( $activity->time));
                       if($activity->userID != 'unknown'){
@@ -255,6 +265,31 @@ include '../db_config.php';
                   <?php }?>
               </tbody>
             </table>
+            <div class="site-pagination d-flex justify-content-center align-items-center">
+              <?php
+                $stmt_my = $pdo->prepare("SELECT COUNT(*) FROM activity_log");
+                $stmt_my->execute();
+                $my_row = $stmt_my->fetch();
+
+                //total number of rows
+                // print_r($my_row[0]);
+
+                $total_recs = $my_row[0];
+                $total_pages = ceil($total_recs/$limit);
+                // print_r($total_recs);
+                $pageLink = "";
+                for($i=1; $i<=$total_pages; $i++){
+                  if ($i==$pn) {
+                    // echo $i;
+                    $pageLink.="<a class='bg-success' style='border-radius:10%; color:white; padding: 6px 12px;' href='activity_log.php?page=$i' class='active'>$i</a>&nbsp;&nbsp;";
+                  }else{
+                    $pageLink.="<a class='bg-default' style='color:white; padding: 15px;' href='activity_log.php?page=$i'>$i</a>&nbsp;&nbsp;";
+                  }
+                }
+                // print_r($pageLink);
+                echo $pageLink;                      
+              ?>
+            </div>
           </div>
         </div>
       </div>
@@ -285,7 +320,7 @@ include '../db_config.php';
             </ul>
           </nav>
           <div class="copyright float-right" id="date">
-            , made with <i class="material-icons">favorite</i> by
+            , made with <i class="material-icons">favorite</i> by <a href="activity_log.php">S-Tec</a> and
             <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
           </div>
         </div>

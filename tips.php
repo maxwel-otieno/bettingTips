@@ -79,7 +79,7 @@
                             <a href="index.php" class="nav-link scroll-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./tips.php" class="nav-link scroll-link">Tips</a>
+                            <a href="./tips.php" style="color:brown;" class="nav-link scroll-link">Tips</a>
                         </li>
                         <li class="nav-item">
                             <a href="./livescore.php" class="nav-link scroll-link">Livescore</a>
@@ -190,7 +190,7 @@
                                 <th style="padding: 10px 20px;">Match</th>
                                 <th style="padding: 10px 20px;">Time</th>
                                 <th style="padding: 10px 20px;">Odds</th>
-                                <th style="padding: 10px 20px;">Tip</th>
+                                <th class="active" style="padding: 10px 20px;">Tip</th>
                                 <th></th>
                             </thead>
 

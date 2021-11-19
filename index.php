@@ -109,14 +109,14 @@
     <link rel="stylesheet" href="./css/stylesheet.css">
     <title>Tips</title>
 </head>
-<body>
+<body style="background-color: white; color: black;">
     <!-- header -->
-    <header id='home' class='header'>
+    <header id='home' class='header' style="background:url(./images/foot_1.jpg)">
         <!-- Navigation -->
-        <nav class="nav">
+        <nav class="nav text-white">
             <div class="navigation container">
                 <div class="logo">
-                    <h1>Betting <span style="color: brown; font-size: 25dp;">Tips</span></h1>
+                    <h1>Bet3ways <span style="color: brown; font-size: 25dp;">.com</span></h1>
                 </div>
                 <div class="menu">
                     <div class="top-nav">
@@ -130,7 +130,7 @@
 
                     <ul class="nav-list">
                         <li class="nav-item active">
-                            <a href="#home" class="nav-link scroll-link">Home</a>
+                            <a href="#home" style="color:brown;" class="nav-link scroll-link">Home</a>
                         </li>
                         <li class="nav-item">
                             <a href="./tips.php" class="nav-link scroll-link">Tips</a>
@@ -139,7 +139,7 @@
                             <a href="livescore.php" class="nav-link scroll-link">Livescore</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#about" class="nav-link scroll-link">About</a>
+                            <a href="https://bet3ways.com/#about-us" class="nav-link scroll-link">About</a>
                         </li>
                         <li class="nav-item">
                             <a href="login.php" class="nav-link scroll-link">Login</a>
@@ -157,7 +157,7 @@
                     <i class="bx bx-shopping-bag"></i>
                 </a> -->
 
-                <div class="hamburger">
+                <div class="hamburger text-white">
                     <i class="bx bx-menu"></i>
                 </div>
             </div>
@@ -178,8 +178,8 @@
             <div class="col-lg-1"></div>
             <div class="col-lg-4 row d-flex justify-content-center align-items-center pl-5">
                 <div class="container"><br><br><br>
-                    <h1 style="font-weight: 800;">For the best odds and tips</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque magni laborum numquam adipisci in ex ratione similique, hic rerum doloremque, animi asperiores nesciunt, eaque aspernatur? Repellendus a repellat beatae sapiente eos ea aperiam ad sunt delectus. Ad tenetur beatae recusandae.</p><br><br><br>
+                    <h1 style="font-weight: 800; color: #FFD700;">For the best odds and tips</h1>
+                    <p style="color: white;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque magni laborum numquam adipisci in ex ratione similique, hic rerum doloremque, animi asperiores nesciunt, eaque aspernatur? Repellendus a repellat beatae sapiente eos ea aperiam ad sunt delectus. Ad tenetur beatae recusandae.</p><br><br><br>
                     <!-- <a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a> -->
                 </div>
             </div>
@@ -187,7 +187,7 @@
             <div class="col-lg-4">
                 <div class="container">
                     <form action="./index.php" method="post">
-                        <h1 style="font-size: 44px; color: white;">Create an Account</h1><br>
+                        <!-- <h1 style="font-size: 44px; color: white;">Create an Account</h1><br> -->
                         <?php
                             if(!empty($Err)){
                                 echo $Err;
@@ -195,7 +195,7 @@
                         // var_dump($result[0]->country_name);
                         
                         // echo $all_users->rowCount();?>
-                        <div class="card" style="background-color: black">
+                        <div class="card" style="background-color: black; margin-top: 20px;">
                             <!-- <h5 class="card-header" style="background-color: #F7F7F7; padding: 20px 5px; font-size: 15px;">Create an account</h5> -->
                             <div class="card-body">
                                 <!-- <h5 class="card-title">Special title treatment</h5> -->
@@ -232,9 +232,9 @@
                     <div id="imgNoDisp" style="height: 300px; margin-bottom: 50px;"><img src="./images/psg_play.jpg" alt="bettingtips.com"></div>
                 </div>
                 <div class="col-md-9">                    
-                    <div class="section sectionToMin" id="mySection">
-                        <h1 style="color: green;">Latest Odds</h1><br>
-                        <table class="table text-white">
+                    <div class="section sectionToMinBlack" id="mySection">
+                        <h1 style="color: #B81E20; font-weight: bold;">Latest Odds</h1><br>
+                        <table class="table text-black">
                             <thead>
                                 <th style="padding: 10px 20px;">League</th>
                                 <th style="padding: 10px 20px;">Match</th>
@@ -250,64 +250,64 @@
                                     <td style="padding-top: 20px;">Juventus - Chelsea</td>
                                     <td style="padding-top: 20px;">20:00</td>
                                     <td style="padding-top: 20px;">2.00 | 3.15 | 2.80</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
+                                    <td style="padding-top: 20px;"><h1 style="border:4px solid green; border-radius: 7px; text-align: center;">H</h1></td>
+                                    <td style="padding-top: 20px;"><a style="text-decoration: none;" href="bet_view.php?name='Maxwel'">More</a></td>
                                 </tr>
                                 <tr>
                                     <td style="padding-top: 20px;">Othaya Youth League</td>
                                     <td style="padding-top: 20px;">Cumbaya FC - Chacaritas FC</td>
                                     <td style="padding-top: 20px;">17:30</td>
                                     <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>D</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
+                                    <td style="padding-top: 20px;"><span><h1 style="border:4px solid brown; border-radius: 7px; text-align: center;">D</h1></span></td>
+                                    <td style="padding-top: 20px;"><span><a style="text-decoration: none;" href="#">View</a></span></td>
                                 </tr>
                                 <tr>
                                     <td style="padding-top: 20px;">English Premier League</td>
                                     <td style="padding-top: 20px;">Juventus - Chelsea</td>
                                     <td style="padding-top: 20px;">20:00</td>
                                     <td style="padding-top: 20px;">2.00 | 3.15 | 2.80</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
+                                    <td style="padding-top: 20px;"><h1 style="border:4px solid green; border-radius: 7px; text-align: center;">H</h1></td>
+                                    <td style="padding-top: 20px;"><a style="text-decoration: none;" href="#">View</a></td>
                                 </tr>
                                 <tr>
                                     <td style="padding-top: 20px;">Othaya Youth League</td>
                                     <td style="padding-top: 20px;">Cumbaya FC - Chacaritas FC</td>
                                     <td style="padding-top: 20px;">17:30</td>
                                     <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>D</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
+                                    <td style="padding-top: 20px;"><h1 style="border:4px solid brown; border-radius: 7px; text-align: center;">D</h1></td>
+                                    <td style="padding-top: 20px;"><a style="text-decoration: none;" href="#">View</a></td>
                                 </tr>
                                 <tr>
                                     <td style="padding-top: 20px;">UEFA Champions League</td>
                                     <td style="padding-top: 20px;">Bayern Munich - Dynamo Kyiv</td>
                                     <td style="padding-top: 20px;">17:30</td>
                                     <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
+                                    <td style="padding-top: 20px;"><h1 style="border:4px solid green; border-radius: 7px; text-align: center;">H</h1></td>
+                                    <td style="padding-top: 20px;"><a style="text-decoration: none;" href="#">View</a></td>
                                 </tr>
                                 <tr>
                                     <td style="padding-top: 20px;">Champions League</td>
                                     <td style="padding-top: 20px;">Benfica - Barcelona</td>
                                     <td style="padding-top: 20px;">17:30</td>
                                     <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>A</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
+                                    <td style="padding-top: 20px;"><h1 style="border:4px solid black; border-radius: 7px; text-align: center;">A</h1></td>
+                                    <td style="padding-top: 20px;"><a style="text-decoration: none;" href="#">View</a></td>
                                 </tr>
                                 <tr>
                                     <td style="padding-top: 20px;">UEFA Champions League</td>
                                     <td style="padding-top: 20px;">Bayern Munich - Dynamo Kyiv</td>
                                     <td style="padding-top: 20px;">17:30</td>
                                     <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
+                                    <td style="padding-top: 20px;"><h1 style="border:4px solid green; border-radius: 7px; text-align: center;">H</h1></td>
+                                    <td style="padding-top: 20px;"><a style="text-decoration: none;" href="#">View</a></td>
                                 </tr>
                                 <tr>
                                     <td style="padding-top: 20px;">Champions League</td>
                                     <td style="padding-top: 20px;">Benfica - Barcelona</td>
                                     <td style="padding-top: 20px;">17:30</td>
                                     <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>A</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
+                                    <td style="padding-top: 20px;"><h1 style="border:4px solid black; border-radius: 7px; text-align: center;">A</h1></td>
+                                    <td style="padding-top: 20px;"><a style="text-decoration: none;" href="#">View</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -316,7 +316,7 @@
             </div>
 
             <!-- Product Banner -->
-            <section class="section">
+            <!-- <section class="section">
                 <div class="product-banner">
                     <div class="left">
                         <img src="./images/thrift_2.jpg" alt="image goes here">
@@ -335,9 +335,27 @@
                     </div>
                                 
                 </div>
-            </section>                  
+            </section>                   -->
+
+            
+            <div class="d-flex justify-content-center section sectionToMinBlack" style="margin:auto; padding-left:3rem; color:#000;">
+                <div style="margin: 40px 0; font-size: 26px;">
+                    <p>Untitled design35With new betting sites in Kenya coming up every other day, it is our job to help you pick the best site for you. No two bookies are alike and choosing the right one is crucial in determining your success. Using the right bookmaker is important because they usually have different odds, bonuses, betting options, betting markets and live betting features. It is also important to consider overlooked features such as cash out, user friendliness of the site, mobile apps etc. All these are important factors that all new and veteran bettors need to consider when picking the right site for them to use.
+                        
+                    Besides the main features, our team goes further to analyze important and often hidden information such as when the site was founded, complaints filed by other users, the trustworthiness of the site,  licenses held, and whether they have been banned by the government.
+
+                    Our reviews are written after analysis has been done by our team of expert sport bettors who are very passionate about sports betting. We are not employers of any betting site and our reviews uphold the highest level of integrity. Furthermore, our recommendations are based on the experience of our editors as well as those of our users. Feel free to include your opinion on any bookmaker listed by us by visiting our site reviews.</p>
+                </div>
+            </div>
                 <!-- Another Advert -->
                 <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>
+
+                <div class="d-flex justify-content-center section sectionToMinBlack" style="margin:auto; padding-left:3rem; color:#000;">
+                    <div style="margin: 40px 0; font-size: 26px;">
+                        <h2 class="text-primary">FREE FOOTBALL PREDICTION SITE</h3>
+                        <p>At Bet3ways, we are passionate with making football punters across the globe make profit with our free football betting tips provided daily! Our team of expert analysts and tipsters work effortlessly to ensure football betting tips provided are safe to stake on. Free betting tips on Bet3ways include OVER 1.5, Double Chance, Potential Risk (High Odds), Upcoming Tips and Free Tipsters Tips no wonder Bet3ways.com is considered as the best free soccer prediction site in the world. Our simple and unique interface makes it easy for users to navigate through our website. We also provide match previews, reports and blog about everything football betting to enable our users get regular updates with the happenings in the world of football via our social media pages.</p>
+                    </div>
+                </div>
                                         
             <div class="row">
                 <div class="col-md-3" id="notShow">                        
@@ -354,8 +372,8 @@
                 </div>
                 <div class="col-md-9">       
                     <!-- Won/Previous Odds -->
-                    <div class="section sectionToMin">
-                        <h1 style="color: green;">Previous and Won Tips</h1><br>
+                    <div class="section sectionToMinBlack">
+                        <h1 style="color: #B81E20; font-weight: bold;">Previous and Won Tips</h1><br>
                         <?php    
                             // $APIkey='090ec463449a0632e9e54bd8a58f66bcf89cad3cb2d4144443dc59534f405c81';
                             $APIkey= $row_api->api_key;
@@ -390,7 +408,7 @@
                             
                             // echo $all_users->rowCount();
                         ?>
-                        <table class="table table-striped text-white">
+                        <table class="table table-striped text-black">
                             <thead>
                                 <th style="padding: 10px 20px;">League</th>
                                 <th style="padding: 10px 20px;">Match</th>
@@ -433,12 +451,12 @@
                     </div>
 
                     <!-- Another Advert -->
-                    <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>
+                    <div class="d-flex justify-content-center" style="margin:auto; padding-bottom: 30px;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>
 
                     <!-- Premium Odds -->
-                    <div class="section sectionToMin">
-                        <h1 style="color: green;">Premium Odds</h1><br>
-                        <table class="table table-striped text-white">
+                    <div class="section sectionToMinBlack">
+                        <h1 style="color: #B81E20; font-weight: bold;">Premium Odds</h1><br>
+                        <table class="table table-striped text-black">
                             <thead>
                                 <th id="toClose" style="padding: 10px 0px;">League</th>
                                 <th style="padding: 10px 0px;">Match</th>
@@ -552,7 +570,7 @@
             </div>            
 
             <!-- Product Banner -->
-            <section class="section">
+            <!-- <section class="section"> -->
                 <!-- <div class="product-banner"> -->
                     <!-- <div class="left">
                         <img src="./images/thrift_2.jpg" alt="image goes here">
@@ -569,13 +587,33 @@
                             <a href="./index.php" class="btn">Sign Up</a>
                         </div>
                     </div> -->
-                    <div class="d-flex justify-content-center" style="margin:auto; padding-left:3rem; color:#f4f4f4;">
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                       The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                    </div>
                                 
                 <!-- </div> -->
-            </section>
+            <!-- </section> -->
+        </div>
+        <div style="width:90%; margin:auto;">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="d-flex justify-content-center" style="background-color: #B81E20; font-family: tahoma; font-size: 20px; margin-bottom: 20px; padding:1rem; color: #f4f4f4; min-height: 400px;">
+                    <div class="section sectionToMin">
+                        <h1 style="font-weight: bold; font-size: 30px;">Live Results</h1>
+                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-center bottomSection" style="background-color: #FFD700; font-family: tahoma; font-size: 20px; margin:auto; padding:5rem; color: black; min-height: 400px;">
+                <div class="section sectionToMin">
+                    <h1 style="font-weight: bold; font-size: 30px;">Premier League Predictions</h1>
+                    <p>Bet3ways offers the most accurate premier league prediction in the world. As you are quite aware, the Premier League is the top tier of England's football pyramid, with 20 teams battling it out for the honour of being crowned English champions. The teams that finish in the bottom three of the league table at the end of the campaign are relegated to the Championship, the second tier of English football. Those teams are replaced by three clubs promoted from the Championship; the sides that finish in first and second place and the third via the end-of-season play-offs.
+
+                    Home to some of the most famous clubs, players, managers and stadiums in world football, the Premier League is the most-watched league on the planet with one billion homes watching the action in 188 countries.
+
+                    At Bet3ways , we take pride in giving the best football predictions with detailed analysis in the English Premiership scoring as high as 88% accuracy in our tips.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 

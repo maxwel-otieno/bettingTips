@@ -24,10 +24,10 @@
             $log_query = $pdo->prepare("INSERT INTO activity_log (`userID`, `time`, `activity`, `activity_desc`) VALUES('$user->id', NOW(), 'Login', 'User of username \"$user->username\" logged in successfully')");
             $log_query->execute();
         }else{
-            $log_query = $pdo->prepare("INSERT INTO activity_log (`userID`, `time`, `activity`, `activity_desc`) VALUES('Unknown', NOW(), 'Login failed', 'Login attempt failed. $name does not exist.')");
+            $log_query = $pdo->prepare("INSERT INTO activity_log (`userID`, `time`, `activity`, `activity_desc`) VALUES('unknown', NOW(), 'Login failed', 'Login attempt by \"$name\" failed. Invalid credentials.')");
             $log_query->execute();
 
-            $Err = "<span class='alert d-flex justify-content-center mb-3' style='background-color:#c10717; color:#fff; border-radius:6px;'>The user doesn't exist. Please try again or&nbsp;<a href='index.php'> sign up</a>.</span>";
+            $Err = "<span class='alert d-flex justify-content-center mb-3' style='background-color:#c10717; color:#fff; border-radius:6px;'>Invalid username or password. Please try again or&nbsp;<a href='index.php'> sign up</a>.</span>";
         }
     }
 ?>
@@ -59,11 +59,11 @@
     <title>Tips|Login</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container text-black">
         <p id="yangu"></p>
         <div id="b4_form" class="row d-flex justify-content-center align-items-center" style="margin-top: 20%;">
             <div id="form_login" style="width: 60%; background-color: white;" class="shadow p-3 mb-3 bg-white rounded">            
-                <div class="d-flex justify-content-center pt-4"><h1 class="text-blue">LogIn</h1></div><br>
+                <div class="d-flex justify-content-center pt-4"><h1 style="color: blue">LogIn</h1></div><br>
                 <div class="container" style="padding: 20px;">
                     <?php
                         if(!empty($Err)){
@@ -71,11 +71,11 @@
                         }
                     ?>
                     <form action="login.php" method="post">
-                        <label for="username">Username</label>
+                        <label style="color: black;" for="username">Username</label>
                         <input type="text" class="form-control py-4" name="username" placeholder="E.g JohnDoe12"><br>
-                        <label for="password">Password</label>
+                        <label style="color: black;" for="password">Password</label>
                         <input type="password" class="form-control py-4" name="password" placeholder="Enter your password"><br>
-                        <p><small>Dont  have an account yet? <a href="./index.php" style="color: blue;">SignUp</a></small><p>
+                        <p style="color: black;"><small>Dont  have an account yet? <a href="./index.php" style="color: blue;">SignUp</a></small><p>
                         <div class="d-flex justify-content-center pt-4"><input type="submit" style="padding: 6px 15px; color: white; cursor: pointer; font-size: 20px; font-family: arial; background-color: blue; border-radius: 5px;" name="login" value="Log In"></div><br>
                         <!-- <button class="btn btn-sm bg-primary" onclick="myFunction">YANGU</button> -->
                         <br>
