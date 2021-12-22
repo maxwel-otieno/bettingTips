@@ -141,14 +141,15 @@
             
 
             // $APIkey='090ec463449a0632e9e54bd8a58f66bcf89cad3cb2d4144443dc59534f405c81';
-            // $APIkey= $row_api->api_key;
-            $APIkey = "090ec463449a0632e9e54bd8a58f66bcf89cad3cb2d4144443dc59534f405c81";
+            $APIkey= $row_api->api_key;
+            // $APIkey = "090ec463449a0632e9e54bd8a58f66bcf89cad3cb2d4144443dc59534f405c81";
             // $from = '2021-07-12';
             // $to = '2021-07-12';
             $league_id = 300;
+            $today_date = date("Y-n-j");
             $curl_options = array(
             // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
-            CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_standings&league_id=152&APIkey=$APIkey",
+            CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$today_date&APIkey=$APIkey",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER => false,
             CURLOPT_TIMEOUT => 30,
@@ -156,9 +157,20 @@
             );
             $curl = curl_init();
             curl_setopt_array( $curl, $curl_options );
-            $country_result = curl_exec( $curl );
-            $country_result = (array) json_decode($country_result);
-            // var_dump($country_result[0]->team_name);
+            $prediction = curl_exec( $curl );
+            $prediction = (array) json_decode($prediction);
+            // var_dump($prediction);
+            // var_dump($prediction[2]);
+
+            // echo "<br>".sizeof($prediction);
+
+            // if ($prediction[2]->prob_HW > $prediction[2]->prob_D && $prediction[2]->prob_HW > $prediction[2]->prob_AW){
+            //     echo "<br>".$prediction[2]->prob_HW;
+            // }else if($prediction[2]->prob_AW > $prediction[2]->prob_HW && $prediction[2]->prob_AW > $prediction[2]->prob_D){
+            //     echo "<br>".$prediction[2]->prob_AW;
+            // }else{
+            //     echo $prediction[2]->prob_D;
+            // }
 
 
             // echo "<div class='container'><br><h1 style='color: red;'> EPL Standings</h1><table class='table table-responsive-sm'><thead style='color:white;'><th>Team</th><th>P</th><th>MP</th><th style='min=width:100px;'>Stats( W D L )</thead><tbody>";
@@ -183,82 +195,55 @@
                 </div>
                 <div class="col-md-9">                    
                     <div class="section sectionToMin" id="mySection">
+                    <!-- <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='620' height='200' src="https://m.22bet.co.ke/?tag=d_723421m_32751c_" ><img src="images/22Bet_1.JPG" alt="22Bet Image"></iframe> -->
+                        <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='700' height='90' src="https://refpasrasw.world/I?tag=d_723421m_47685c_&site=723421&ad=47685" ></iframe>
+                        <!-- <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='495' height='130' src="https://melbanusd.top/I?tag=d_730661m_43501c_&site=730661&ad=43501" ><img src="images/22Bet_1.JPG" alt="22Bet Image"></iframe> -->
                         <h1 style="color: green;">Latest Odds</h1><br>
+                        <?php 
+                            if (sizeof($prediction) < 3){?>
+                                <span class="d-flex justify-content-center"><h1>Sorry!! No tips are available at the moment</h1></span>
+                            <?php }else{
+                        ?>
                         <table class="table text-white">
                             <thead>
+                                <th style="padding: 10px 20px;">Country</th>
                                 <th style="padding: 10px 20px;">League</th>
                                 <th style="padding: 10px 20px;">Match</th>
                                 <th style="padding: 10px 20px;">Time</th>
-                                <th style="padding: 10px 20px;">Odds</th>
+                                <!-- <th style="padding: 10px 20px;">Odds</th> -->
                                 <th class="active" style="padding: 10px 20px;">Tip</th>
-                                <th></th>
+                                <!-- <th></th> -->
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td style="padding-top: 20px;">English Premier League</td>
-                                    <td style="padding-top: 20px;">Juventus - Chelsea</td>
-                                    <td style="padding-top: 20px;">20:00</td>
-                                    <td style="padding-top: 20px;">2.00 | 3.15 | 2.80</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top: 20px;">Othaya Youth League</td>
-                                    <td style="padding-top: 20px;">Cumbaya FC - Chacaritas FC</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>D</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top: 20px;">English Premier League</td>
-                                    <td style="padding-top: 20px;">Juventus - Chelsea</td>
-                                    <td style="padding-top: 20px;">20:00</td>
-                                    <td style="padding-top: 20px;">2.00 | 3.15 | 2.80</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top: 20px;">Othaya Youth League</td>
-                                    <td style="padding-top: 20px;">Cumbaya FC - Chacaritas FC</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>D</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top: 20px;">UEFA Champions League</td>
-                                    <td style="padding-top: 20px;">Bayern Munich - Dynamo Kyiv</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top: 20px;">Champions League</td>
-                                    <td style="padding-top: 20px;">Benfica - Barcelona</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>A</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top: 20px;">UEFA Champions League</td>
-                                    <td style="padding-top: 20px;">Bayern Munich - Dynamo Kyiv</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top: 20px;">Champions League</td>
-                                    <td style="padding-top: 20px;">Benfica - Barcelona</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>A</h1></td>
-                                    <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td>
-                                </tr>
+                                <?php
+                                    for($a=0; $a<11;$a++){
+                                        if($prediction[$a]->match_status != "Finished"){
+                                            // if($prediction[$a]->league_name == "FKF Premier League" || ($prediction[$a]->country_name == "England" && $prediction[$a]->league_name == "Premier League")){
+                                        // echo $a;
+                                        ?>
+                                        <tr>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->country_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->league_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_hometeam_name;?> - <?php echo $prediction[$a]->match_awayteam_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_time;?></td>
+                                            <!-- <td style="padding-top: 20px;">
+                                                2.00 | 3.15 | 2.80</td> -->
+                                            <td style="padding-top: 20px;"><?php 
+                                                if ($prediction[$a]->prob_HW > $prediction[$a]->prob_D && $prediction[$a]->prob_HW > $prediction[$a]->prob_AW){
+                                                    // echo "<br>".$prediction[2]->prob_HW;
+                                                    $predict = "<h1 style='border:4px solid green; border-radius: 7px; text-align: center;'>1</h1>";
+                                                }else if($prediction[$a]->prob_AW > $prediction[$a]->prob_HW && $prediction[$a]->prob_AW > $prediction[$a]->prob_D){
+                                                    // echo "<br>".$prediction[2]->prob_AW;
+                                                    $predict = "<h1 style='border:4px solid black; border-radius: 7px; text-align: center;'>2</h1>";
+                                                }else{
+                                                    // echo $prediction[2]->prob_D;
+                                                    $predict = "<h1 style='border:4px solid brown; border-radius: 7px; text-align: center;'>X</h1>";
+                                                } ?><h1><?php echo $predict;?></h1></td>
+                                            <!-- <td style="padding-top: 20px;"><a href="#">More</a></td> -->
+                                        </tr>
+                                   <?php } } }
+                                ?> 
                             </tbody>
                         </table>
                     </div>       <!--Current odds preview section end --> 

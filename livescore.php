@@ -120,7 +120,6 @@
             $APIkey= $row_api->api_key;
             $from = '2021-07-12';
             $to = '2021-07-12';
-            $league_id = 300;
 
             $curl_options = array(
             // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
@@ -148,10 +147,10 @@
             // $APIkey = "090ec463449a0632e9e54bd8a58f66bcf89cad3cb2d4144443dc59534f405c81";
             // $from = '2021-07-12';
             // $to = '2021-07-12';
-            $league_id = 300;
+            $league_id = 152;
             $curl_options = array(
             // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
-            CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_standings&league_id=152&APIkey=$APIkey",
+            CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_standings&league_id=$league_id&APIkey=$APIkey",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER => false,
             CURLOPT_TIMEOUT => 30,
@@ -169,10 +168,10 @@
             // $APIkey = "090ec463449a0632e9e54bd8a58f66bcf89cad3cb2d4144443dc59534f405c81";
             // $from = '2021-07-12';
             // $to = '2021-07-12';
-            $league_id = 300;
+            $laliga_id = 302;
             $curl_options = array(
             // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
-            CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_standings&league_id=302&APIkey=$APIkey",
+            CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_standings&league_id=$laliga_id&APIkey=$APIkey",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER => false,
             CURLOPT_TIMEOUT => 30,
@@ -182,17 +181,7 @@
             curl_setopt_array( $curl_laliga, $curl_options );
             $laliga_result = curl_exec( $curl_laliga );
             $laliga_result = (array) json_decode($laliga_result);
-            // var_dump($laliga_result[0]);
-
-
-            // echo "<div class='container'><br><h1 style='color: red;'> EPL Standings</h1><table class='table table-responsive-sm'><thead style='color:white;'><th>Team</th><th>P</th><th>MP</th><th style='min=width:100px;'>Stats( W D L )</thead><tbody>";
-            // for($a = 0; $a<sizeof($country_result); $a++){
-            //     echo "<tr style='color:white;'><td class='text-white'>".($a+1)." . ".$country_result[$a]->team_name."</td>   <td class='text-red'>".$country_result[$a]->overall_league_PTS."</td> <td>".$country_result[$a]->overall_league_payed."</td> <td style='min-width:30vh;'><span class='p-2 px-2 text-white'>".$country_result[$a]->overall_league_W."</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class='p-3 text-white'>".$country_result[$a]->overall_league_D."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class='p-2 text-white'>".$country_result[$a]->overall_league_L."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
-            // };
-            // echo "</tbody></table></div>";
-
-
-            // echo $all_users->rowCount();?>
+            // var_dump($laliga_result[0]);?>
 
     </header>
 

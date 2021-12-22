@@ -64,4 +64,13 @@ try {
     $row = $query->fetch(PDO::FETCH_OBJ);
     return $row;
   }
+
+
+  //fetch articles
+  $stmt_articles = $pdo->prepare("SELECT * FROM articles");
+  $stmt_articles->execute();
+  $row_articles = $stmt_articles->fetchAll(PDO::FETCH_OBJ);
+
+  //select single article
+  $single_article = $pdo->prepare("SELECT * FROM articles WHERE id=?");
 ?>
