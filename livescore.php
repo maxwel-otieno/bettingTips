@@ -58,7 +58,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: white; color: black;">
     <!-- header -->
     <header id='home'>
         <!-- Navigation -->
@@ -181,63 +181,96 @@
             curl_setopt_array( $curl_laliga, $curl_options );
             $laliga_result = curl_exec( $curl_laliga );
             $laliga_result = (array) json_decode($laliga_result);
-            // var_dump($laliga_result[0]);?>
+            // var_dump($laliga_result[0]);
+            
+            //LIVE SCORE EVENTS
+            $APIkey= $row_api->api_key;
+            // $APIkey = "090ec463449a0632e9e54bd8a58f66bcf89cad3cb2d4144443dc59534f405c81";
+            // $from = '2021-07-12';
+            // $to = '2021-07-12';
+            $laliga_id = 302;
+            $curl_options = array(
+            // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
+            CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_events&from=2021-07-12&to=2021-07-12&league_id=$league_id&APIkey=$APIkey",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HEADER => false,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_CONNECTTIMEOUT => 5
+            );
+            $curl_live = curl_init();
+            curl_setopt_array( $curl_live, $curl_options );
+            $live_result = curl_exec( $curl_live );
+            $live_result = (array) json_decode($live_result);
+            // var_dump($live_result);
+            ?>
 
     </header>
 
-    <div style="min-height: 200px; margin-bottom: 100px;" class="mt-5">
+    <div style="min-height: 200px;">
         <div class="container">
-            <div class="d-flex justify-content-center section sectionToMin" style="overflow: auto;">
-                <span><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" style="text-decoration: none; color: red;" id="mySection">Today</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3></span>|<span><h2 class="text-white" id="mySection">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yesterday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2></span>|<span><h2 class="text-white" id="mySection">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tomorrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2></span>|<span><h2 class="text-white" id="mySection">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Live</h2></span>
+            <div class="d-flex justify-content-center section sectionToMinBlack" style="overflow: auto;">
+                <span><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" style="text-decoration: none; color: red;" id="mySection">Today</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2></span>|<span><h2 id="mySection">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yesterday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2></span>|<span><h2 id="mySection">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tomorrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2></span>|<span><h2 id="mySection">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Live</h2></span>
             </div>
             <div class="row">
-                <div class="col-md-3 pt-5" id="notShow">
+                <div class="col-md-3" id="notShow">
                     <!-- <div style="height: 200px; margin-top: 50px;"><img src="./images/messi_bt2.jpg" alt="bettingtips.com"></div>
                     <div id="imgNoDisp" style="height: 300px; margin-bottom: 50px;"><img src="./images/sky_sports_1.jpg" alt="bettingtips.com"></div>
                     <div id="imgNoDisp" style="height: 300px; margin-bottom: 50px;"><img src="./images/psg_play.jpg" alt="bettingtips.com"></div> -->
                     <?php 
                         // var_dump($result);
-                        for($a=0;$a<sizeof($result)-155;$a++){
+                        for($a=1;$a<sizeof($result)-155;$a++){
                             echo "<img src='".$result[$a]->country_logo."' alt='logo here' style='width:20%;'/>&nbsp;&nbsp;&nbsp;";
-                            echo "<a href='#' class='text-white'>".$result[$a]->country_name."</a><br><br>";
+                            echo "<a href='#'>".$result[$a]->country_name."</a><br><br>";
                         }
                     ?>
                 </div>
-                <div class="col-md-5">               
-                    <div class="section sectionToMin" id="mySection">
+                <div class="col-md-9">               
+                    <div class="section sectionToMinBlack" id="mySection">
                         <?php             
-                            for($i=0; $i<sizeof($result)-155; $i++){
+                            for($i=1; $i<sizeof($result)-155; $i++){
                                 if($i == 6){
                                     echo "<!-- Another Advert -->
                                     <br><br><div class='d-flex justify-content-center' style='margin:auto;'><a href='https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152'; target='_blank' rel='nofollow'><img src='https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/' alt='' /></a></div>   <br><br>   <br> ";
                                 }
                                 // echo $result[$i]->country_name."<br>";?>
                         <h1 style="color: brown;"><?php echo $result[$i]->country_name;?></h1><br>
-                        <table class="table text-white">
+                        <table class="table">
                             <thead>
                                 <!-- <th style="padding: 10px 20px;">League</th> -->
                                 <th style="padding: 10px 20px;">Time</th>
                                 <th style="padding: 10px 20px;">Match</th>
                                 <th style="padding: 10px 20px;">Score</th>
                                 <th style="padding: 10px 20px;"></th>
-                                <th></th>
                             </thead>
 
                             <tbody>
-                                <tr class="text-white">
-                                    <!-- <td style="padding-top: 20px;">English Premier League</td> -->
+                                <?php 
+                                    // for($a=1;$a<sizeof($live_result);$a++){ ?>
+                                        <!-- <tr> -->
+                                            <!-- <td style="padding-top: 20px;">English Premier League</td> -->
+                                            <!-- <td style="padding-top: 20px;"><?php 
+                                            // echo $live_result[$a]->match_time; 
+                                            ?></td> -->
+                                            <!-- <td style="padding-top: 20px;">Juventus - Chelsea</td> -->
+                                            <!-- <td style="padding-top: 20px;"> _ - _</td> -->
+                                            <!-- <td style="padding-top: 20px;"><h1>H</h1></td> -->
+                                            <!-- <td class="text-center;" style="padding-top: 20px;"><i id="myId" class="fa fa-star-o fa-2x" aria-hidden="true" onclick="myFunction1('myId')"></i></td> -->
+                                        <!-- </tr> -->
+                                        <?php 
+                                        // echo "<img src='".$result[$a]->country_logo."' alt='logo here' style='width:20%;'/>&nbsp;&nbsp;&nbsp;";
+                                        // echo "<a href='#'>".$result[$a]->country_name."</a><br><br>";
+                                    // }
+                                ?>
+                                <tr>
                                     <td style="padding-top: 20px;">20:00</td>
                                     <td style="padding-top: 20px;">Juventus - Chelsea</td>
                                     <td style="padding-top: 20px;"> _ - _</td>
-                                    <!-- <td style="padding-top: 20px;"><h1>H</h1></td> -->
                                     <td class="text-center;" style="padding-top: 20px;"><i id="myId" class="fa fa-star-o fa-2x" aria-hidden="true" onclick="myFunction1('myId')"></i></td>
                                 </tr>
-                                <tr class="text-white">
-                                    <!-- <td style="padding-top: 20px;">English Premier League</td> -->
+                                <tr>
                                     <td style="padding-top: 20px; color: #CE2B37;">88'</td>
                                     <td style="padding-top: 20px;">Kenya - S Sudan</td>
                                     <td style="padding-top: 20px;"> 4 - 2</td>
-                                    <!-- <td style="padding-top: 20px;"><h1>H</h1></td> -->
                                     <td class="text-center;" style="padding-top: 20px; color: #ffef00;"><i id="toChangeId" class="fa fa-star fa-2x" aria-hidden="true" onclick="myFunction1('toChangeId')"></i></td>
                                 </tr>
                             </tbody>
@@ -253,7 +286,7 @@
                             if (icon.classList.contains("fa-star")){
                                 icon.classList.remove("fa-star");
                                 icon.classList.add("fa-star-o");
-                                icon.style.color = '#fff';
+                                icon.style.color = '#000';
                                 console.log('A');
                             }else if (icon.classList.contains("fa-star-o")){
                                 icon.classList.remove("fa-star-o");
@@ -271,27 +304,30 @@
 
                     <!-- Another Advert -->
                     <!-- <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>   -->
-                </div>     
-                <div class="col-md-4">
+                </div>   
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
                     <?php
-                        echo "<div class='container mt-5 pt-5'><br><h3 style='color: #C3C3C3;'> EPL Standings</h3><table class='table'><tbody>";
+                        echo "<div class='container mt-5 pt-5'><br><h1 style='color: #000;'> EPL Standings</h1><br><br><table class='table'><thead><th></th><th>P</th><th style='text-align-center'><span class='p-2 px-2'>W</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='p-2 px-2'>D</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='p-2 px-2'>L</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th></thead><tbody>";
                         for($a = 0; $a<sizeof($country_result)-15; $a++){
-                            echo "<tr style='color:white;'><td class='text-white'><img src='".$country_result[$a]->team_badge."' alt='img here' style='width:10%;'></img>&nbsp;&nbsp;&nbsp;&nbsp;".$country_result[$a]->team_name."</td>   <td class='text-red'>".$country_result[$a]->overall_league_PTS."</td><td style='min-width:30vh;'><span class='p-2 px-2 text-white'>".$country_result[$a]->overall_league_W."</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class='p-3 text-white'>".$country_result[$a]->overall_league_D."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class='p-2 text-white'>".$country_result[$a]->overall_league_L."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+                            echo "<tr><td><img src='".$country_result[$a]->team_badge."' alt='img here' style='width:10%;'></img>&nbsp;&nbsp;&nbsp;&nbsp;".$country_result[$a]->team_name."</td>   <td>".$country_result[$a]->overall_league_PTS."</td><td style='min-width:30vh;'><span class='p-2 px-2'>".$country_result[$a]->overall_league_W."</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class='p-3'>".$country_result[$a]->overall_league_D."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class='p-2'>".$country_result[$a]->overall_league_L."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
                         };
-                        echo "</tbody></table></div>";
+                        echo "</tbody></table><div class='d-flex justify-content-center'><button class='btn btn-mini bg-primary' style='border-radius:5px;'>More</button></div></div>";
 
                         echo "<br><br>";
-                        echo "<div class='container mt-5 pt-5'><br><h3 style='color: #C3C3C3;'> Laliga Standings</h3><table class='table'><tbody>";
+                        echo "<div class='container mt-5 mb-5 pt-5'><br><h1 style='color: #000;'> Laliga Standings</h1><br><br><table class='table'><tbody>";
                         for($a = 0; $a<sizeof($laliga_result)-15; $a++){
-                            echo "<tr style='color:white;'><td class='text-white'><img src='".$laliga_result[$a]->team_badge."' alt='img here' style='width:10%;'></img>&nbsp;&nbsp;&nbsp;&nbsp;".$laliga_result[$a]->team_name."</td>   <td>".$laliga_result[$a]->overall_league_PTS."</td><td style='min-width:30vh;'><span class='p-2 px-2 text-white'>".$laliga_result[$a]->overall_league_W."</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class='p-3 text-white'>".$laliga_result[$a]->overall_league_D."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class='p-2 text-white'>".$laliga_result[$a]->overall_league_L."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+                            echo "<tr><td><img src='".$laliga_result[$a]->team_badge."' alt='img here' style='width:10%;'></img>&nbsp;&nbsp;&nbsp;&nbsp;".$laliga_result[$a]->team_name."</td>   <td>".$laliga_result[$a]->overall_league_PTS."</td><td style='min-width:30vh;'><span class='p-2 px-2'>".$laliga_result[$a]->overall_league_W."</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class='p-3'>".$laliga_result[$a]->overall_league_D."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class='p-2'>".$laliga_result[$a]->overall_league_L."</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
                         };
-                        echo "</tbody></table></div>";
+                        echo "</tbody></table><div class='d-flex justify-content-center'><button class='btn btn-mini bg-primary' style='border-radius:5px;'>More</button></div></div>";
                     ?>
                 </div>
             </div>
-        </div>
-        <!-- <iframe scrolling="no" id="hearthis_at_track_4535954" width="100%" height="150" src="https://app.hearthis.at/embed/4535954/transparent_black/?hcolor=&color=&style=2&block_size=2&block_space=1&background=1&waveform=0&cover=0&autoplay=1&css=" frameborder="0" allowtransparency allow="autoplay"><p>Listen to <a href="https://hearthis.at/ty7cpt3h/new-school-poprb/" target="_blank">New School Pop &amp; R&amp;B (2013 - 2019)</a> <span>by</span><a href="https://hearthis.at/ty7cpt3h/" target="_blank" >DJ KenB</a> <span>on</span> <a href="https://hearthis.at/" target="_blank">hearthis.at</a></p></iframe> -->
     </div>
+        </div>
+        <!-- <iframe scrolling="no" id="hearthis_at_track_4535954" width="100%" height="150" src="https://app.hearthis.at/embed/4535954/transparent_black/?hcolor=&color=&style=2&block_size=2&block_space=1&background=1&waveform=0&cover=0&autoplay=1&css=" frameborder="0" allowtransparency allow="autoplay"><p>Listen to <a href="https://hearthis.at/ty7cpt3h/new-school-poprb/" target="_blank">New School Pop &amp; R&amp;B (2013 - 2019)</a> <span>by</span><a href="https://hearthis.at/ty7cpt3h/" target="_blank" >DJ KenB</a> <span>on</span> <a href="https://hearthis.at/" target="_blank">hearthis.at</a></p></iframe> -->  
 
     <!-- Footer -->
     <footer id="footer" class="section footer">

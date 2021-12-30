@@ -55,7 +55,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: white; color: black;">
     <!-- header -->
     <header id='home'>
         <!-- Navigation -->
@@ -147,9 +147,19 @@
             // $to = '2021-07-12';
             $league_id = 300;
             $today_date = date("Y-n-j");
+            $today_day = date('j');
+            // echo "today ".$today_date;
+        
+            $yester_day = $today_day - 1;
+            $yester_date = date("Y-n")."-".($yester_day);
+            // echo "Yesterday ".$yester_date;
+        
+            $today_day++;
+            $tomorrow_date = date("Y-n")."-".($today_day);
             $curl_options = array(
             // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
-            CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$today_date&APIkey=$APIkey",
+            // CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$today_date&APIkey=$APIkey",
+            CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$tomorrow_date&APIkey=$APIkey",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER => false,
             CURLOPT_TIMEOUT => 30,
@@ -184,27 +194,29 @@
 
     </header>
 
-    <div style="min-height: 200px; margin-bottom: 100px;" class="mt-5">
+    <div style="min-height: 200px; margin-bottom: 100px;" class="mt-1">
         <div class="container">
-            <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>
+            <!-- <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div> -->
             <div class="row">
                 <div class="col-md-3 pt-5">
-                    <div style="height: 200px; margin-top: 50px;"><img src="./images/messi_bt2.jpg" alt="bettingtips.com"></div>
+                    <div id="imgNoDisp" style="height: 200px; margin-top: 50px;"><img src="./images/messi_bt2.jpg" alt="bettingtips.com"></div>
                     <div id="imgNoDisp" style="height: 300px; margin-bottom: 50px;"><img src="./images/sky_sports_1.jpg" alt="bettingtips.com"></div>
                     <div id="imgNoDisp" style="height: 300px; margin-bottom: 50px;"><img src="./images/psg_play.jpg" alt="bettingtips.com"></div>
                 </div>
                 <div class="col-md-9">                    
-                    <div class="section sectionToMin" id="mySection">
+                    <div class="section sectionToMinBlack" id="mySection">
                     <!-- <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='620' height='200' src="https://m.22bet.co.ke/?tag=d_723421m_32751c_" ><img src="images/22Bet_1.JPG" alt="22Bet Image"></iframe> -->
                         <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='700' height='90' src="https://refpasrasw.world/I?tag=d_723421m_47685c_&site=723421&ad=47685" ></iframe>
                         <!-- <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='495' height='130' src="https://melbanusd.top/I?tag=d_730661m_43501c_&site=730661&ad=43501" ><img src="images/22Bet_1.JPG" alt="22Bet Image"></iframe> -->
-                        <h1 style="color: green;">Latest Odds</h1><br>
+                        <div class="d-flex justify-content-center">
+                            <h1 style="font-size: 30px; letter-spacing: 2px; color: #8DC360; border: 3px solid #8DC360; padding: 10px 30px; margin-bottom: 4rem;">LATEST TIPS</h1><br>
+                        </div>
                         <?php 
                             if (sizeof($prediction) < 3){?>
                                 <span class="d-flex justify-content-center"><h1>Sorry!! No tips are available at the moment</h1></span>
                             <?php }else{
                         ?>
-                        <table class="table text-white">
+                        <table class="table">
                             <thead>
                                 <th style="padding: 10px 20px;">Country</th>
                                 <th style="padding: 10px 20px;">League</th>
@@ -250,59 +262,16 @@
 
                     <!-- Another Advert -->
                     <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>         
-                    
-                    <!-- Won/Previous Odds -->
-                    <div class="section sectionToMin">
-                        <h1 style="color: green;">Previous and Won Tips</h1><br>
-                        <table class="table table-striped text-white">
-                            <thead>
-                                <th style="padding: 10px 20px;">League</th>
-                                <th style="padding: 10px 20px;">Match</th>
-                                <th style="padding: 10px 20px;">Time</th>
-                                <th style="padding: 10px 20px;">Odds</th>
-                                <th style="padding: 10px 20px;">Tip</th>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td style="padding-top: 20px;">Champions League</td>
-                                    <td style="padding-top: 20px;">PSG - Manchester City</td>
-                                    <td style="padding-top: 20px;">20:00</td>
-                                    <td style="padding-top: 20px;">2.90 | 5.30 | 2.10</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top: 20px;">Othaya Youth League</td>
-                                    <td style="padding-top: 20px;">Cumbaya FC - Chacaritas FC</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>D</h1></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top: 20px;">UEFA Champions League</td>
-                                    <td style="padding-top: 20px;">Bayern Munich - Dynamo Kyiv</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top: 20px;">Champions' League</td>
-                                    <td style="padding-top: 20px;">Benfica - Barcelona</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>A</h1></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
 
                     <!-- Another Advert -->
-                    <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>
+                    <!-- <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div> -->
 
                     <!-- Premium Odds -->
-                    <div class="section sectionToMin">
-                        <h1 style="color: green;">Premium Odds</h1><br>
-                        <table class="table table-striped text-white">
+                    <div class="section sectionToMinBlack">
+                        <div class="d-flex justify-content-center">
+                            <span style="font-size: 30px; letter-spacing: 2px; color: #8DC360; border: 3px solid #8DC360; padding: 10px 30px; margin-bottom: 4rem;">PREMIUM TIPS</span><br><br>
+                        </div>
+                        <table class="table table-striped">
                             <thead>
                                 <th id="toClose" style="padding: 10px 0px;">League</th>
                                 <th style="padding: 10px 0px;">Match</th>

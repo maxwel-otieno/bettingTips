@@ -151,23 +151,27 @@
                 <h1 style="font-size: 30px; margin-bottom: 4rem;"><?php echo $row_article->title;?></h1><br><br>
             </div>
             <div class="row mb-4">
-                <div class="col-md-8">
+                <div class="col-lg-8 col-md-12">
                     <?php 
                         echo $row_article->body;
                     ?>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-3 mt-4">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 col-md-12 mt-4">
                     <h1>FREE MONEY</h1><hr style="width: 20%; background-color: #C13333; font-weight: bold; margin-bottom: 4rem;"/>
                     <div class="table table-bordered">
                         <table>
                             <tbody>
                                 <tr>
-                                    <td><a class="d-flex justify-content-center align-items-center" href="https://m.22bet.co.ke/?tag=d_723421m_32751c_"><img style="width: 80%;" class="img-fluid" src="images/22Bet_1.JPG" alt="Image Here"/></a></td>
-                                    <td><div class="d-flex justify-content-center" style="align-self: center; padding-top: 25px;"><a href="22bet.com">22Bet</a></div></td>
-                                    <td><span class="btn bg-warning">Get Bonus</span></td>
+                                    <td><a class="d-flex justify-content-center align-items-center" href="https://m.22bet.co.ke/?tag=d_723421m_32751c_"><img style="width: 100%; height: auto;" src="images/22Bet_1.JPG" alt="Image Here"/></a></td>
+                                    <td class="d-flex justify-content-center" style="text-align: center;">
+                                        <div class="inner">
+                                            <a href="22bet.com">22Bet</a><br>
+                                            <span class="btn bg-warning">Get Bonus</span>
+                                        </div>
+                                    </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td><a class="d-flex justify-content-center align-items-center" href="https://m.22bet.co.ke/?tag=d_723421m_32751c_"><img style="width: 80%;" class="img-fluid" src="images/22Bet_1.JPG" alt="Image Here"/></a></td>
                                     <td><div class="d-flex justify-content-center" style="align-self: center; padding-top: 25px;"><a href="22bet.com">AlphaBet</a></div></td>
                                     <td><span class="btn bg-warning">Get Bonus</span></td>
@@ -196,7 +200,7 @@
                                     <td><a class="d-flex justify-content-center align-items-center" href="https://m.22bet.co.ke/?tag=d_723421m_32751c_"><img style="width: 80%;" class="img-fluid" src="images/22Bet_1.JPG" alt="Image Here"/></a></td>
                                     <td><div class="d-flex justify-content-center" style="align-self: center; padding-top: 25px;"><a href="22bet.com">Bet254</a></div></td>
                                     <td><span class="btn bg-warning">Get Bonus</span></td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -207,7 +211,7 @@
                     <div class="col-lg-2"></div>
                     <div class="col-lg-4 p-5">
                         <div class="d-flex justify-content-center">
-                            <img src="./images/22bet-logo.PNG" alt="" style="width:25rem; padding: 2rem;">
+                            <a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_" style="cursor: pointer;"><img src="./images/22bet-logo.PNG" alt="" style="width:25rem; padding: 2rem;"></a>
                         </div>
                     </div>
                     <div class="col-lg-4 p-5">
@@ -229,7 +233,7 @@
                 <div class="col-md-6 mb-4">
                     <h1>USEFUL LINKS</h1><hr style="width:10%; height: 30px; color: #f4f4f4;">
                     <a href=""><h2>HOW TO WORK AND EARN ONLINE</h2></a><hr>
-                    <a href=""><h2>Best way of making money with football betting</h2></a><hr>
+                    <a href=""><h2>BEST WAY OF MAKING MONEY WITH FOOTBALL BETTING</h2></a><hr>
                     <a href=""><h2>BEST FOOTBALL PREDICTION SITES?</h2></a><hr>
                     <a href=""><h2>BEST SOCCER PREDICTION SITE FOR FIXED MATCHES?</h2></a><hr>
                     <a href=""><h2>FOOTBALL BETTING GUIDE</h2></a><hr>
