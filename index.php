@@ -1,6 +1,10 @@
 <?php 
-    include 'db_config.php';
+    require_once 'db_config.php';
 
+    session_start();
+    $_SESSION['username'] = 'Maxwel';
+
+    // echo $_SESSION['username'];
     $Err = "";
     function checkemail($str) {
         return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
@@ -33,33 +37,33 @@
     // $from = '2021-07-12';
     // $to = '2021-07-12';
     $league_id = 300;
-    $today_date = date("Y-n-j");
-    $today_day = date('j');
-    // echo "today ".$today_date;
+    // $today_date = date("Y-n-j");
+    // $today_day = date('j');
+    // // echo "today ".$today_date;
 
-    $yester_day = $today_day - 1;
-    $yester_date = date("Y-n")."-".($yester_day);
-    // echo "Yesterday ".$yester_date;
+    // $yester_day = $today_day - 1;
+    // $yester_date = date("Y-n")."-".($yester_day);
+    // // echo "Yesterday ".$yester_date;
 
-    $today_day++;
-    $tomorrow_date = date("Y-n")."-".($today_day);
+    // $today_day++;
+    // $tomorrow_date = date("Y-n")."-".($today_day);
     // echo "tomorrow ".$tomorrow_date;
     // echo $today_date."<br>";
     // echo $tomorrow_date;
 
-    $curl_options = array(
-    // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
-    // CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$tomorrow_date&APIkey=$APIkey",
-    CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$today_date&APIkey=$APIkey",
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HEADER => false,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_CONNECTTIMEOUT => 5
-    );
-    $curl = curl_init();
-    curl_setopt_array( $curl, $curl_options );
-    $prediction = curl_exec( $curl );
-    $prediction = (array) json_decode($prediction);
+    // $curl_options = array(
+    // // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
+    // // CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$tomorrow_date&APIkey=$APIkey",
+    // CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$today_date&APIkey=$APIkey",
+    // CURLOPT_RETURNTRANSFER => true,
+    // CURLOPT_HEADER => false,
+    // CURLOPT_TIMEOUT => 30,
+    // CURLOPT_CONNECTTIMEOUT => 5
+    // );
+    // $curl = curl_init();
+    // curl_setopt_array( $curl, $curl_options );
+    // $prediction = curl_exec( $curl );
+    // $prediction = (array) json_decode($prediction);
     // var_dump($prediction);
             
 
@@ -146,6 +150,9 @@
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="./css/stylesheet.css">
     <style>
+        body{
+            background-color: white; color: black;
+        }
         .headers_min{
             font-size: 30px;
             letter-spacing: 2px;
@@ -154,6 +161,15 @@
             padding: 10px 30px; 
             margin-bottom: 4rem;
         }
+        .modal-table tr{
+            margin-bottom: 20px;
+        }
+
+        /*tables */
+        .modal-table tr td{
+            vertical-align: center; text-align: center;
+        }
+
         /* The Modal (background) */
         .modal {
         display: none; /* Hidden by default */
@@ -187,6 +203,7 @@
             width: 28rem;
             min-height: 30rem;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 7rem;
         }
         .cardYangu:hover{
             min-height: 30rem;
@@ -234,6 +251,24 @@
         .sectionToMinBlack td{
             font-size: 22px;
         }
+        .frames{
+            display: none;
+        }
+        .myBonus{
+            padding-bottom: 3rem; 
+            padding-left: 2rem; 
+            padding-right: 2rem;
+        }
+        .myBonuns span{
+            font-size: 15px;
+        }
+        .myFooter{
+            /* position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center; */
+        }
         @media only screen and (max-width: 768px){
             .container{
                 width: 100%;
@@ -248,23 +283,86 @@
                 font-size: 14px;
                 /* color: white; */
             }
+            #notShow{
+                display: none;
+            }
+            #myModal{
+                display: none;
+            }
+            .myBonus span{
+                padding: 5px;
+                font-size: 12px;
+            }
+
+            /*Bottom links */
+            
+            .bottomLink h1{
+                font-size: 18px;
+            }
+            .bottomLink h2{
+                font-size: 14px;
+            }
+        }
+        @media only screen and (max-width: 567px){
+            .frames{
+                display: block;
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                z-index: 9999;
+            }
+            .container{
+                width: 100% !important;
+            }
+            .modal-table img{
+                width: 60% !important;
+            }
+            .modal-table td{
+                padding: 5px !important;
+            }
+
+            /* Blog */
+            .cardYangu{
+                width: 20rem;
+                min-height: 22rem;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                margin-bottom: 7rem;
+            }
+            .cardYangu h1{
+                font-size: 14px;
+            }
+
+
+            .sectionToMinSpec span{
+                font-size: 12px;
+                color: black;
+                padding:2px;
+            }
+
+            /* modal elements */
+            .myBonus span{
+                padding: 5px 10px;;
+                font-size: 10px;
+            }
         }
 </style>
-    <title>Tips</title>
+    <title>Bet3ways</title>
 </head>
-<body style="background-color: white; color: black;">
+<body>
     <!-- header -->
     <header id='home' class='header' style="background:url(./images/foot_1.jpg)">
         <!-- Navigation -->
         <nav class="nav text-white">
             <div class="navigation container">
                 <div class="logo">
-                    <h1>Bet3ways <span style="color: brown; font-size: 25dp;">.com</span></h1>
+                    <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
                 </div>
                 <div class="menu">
                     <div class="top-nav">
                         <div class="logo">
-                            <h1>Betting <span style="color: brown; font-size: 25dp;">Tips</span></h1>
+                            <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
                         </div>
                         <div class="close">
                             <i class='bx bx-x' ></i>
@@ -282,13 +380,16 @@
                             <a href="livescore.php" class="nav-link scroll-link">Livescore</a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://bet3ways.com/#about-us" class="nav-link scroll-link">About</a>
+                            <a href="./about.php" class="nav-link scroll-link">About</a>
                         </li>
                         <li class="nav-item">
                             <a href="login.php" class="nav-link scroll-link">Login</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#home" class="nav-link scroll-link">Create Account</a>
+                        </li> -->
+                        <li class="nav-item active">
+                            <a href="./vipsite.php" class="nav-link scroll-link" style="color: brown; padding: 0.3rem 1.8rem; background-color: gold; border: 1px solid #f4f4f4; font-weight: bold;">VVIP</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a href="cart.html" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
@@ -321,13 +422,15 @@
             <div class="col-lg-1"></div>
             <div class="col-lg-4 row d-flex justify-content-center align-items-center pl-5">
                 <div class="container"><br><br><br>
-                    <h1 style="font-weight: 800; color: #FFD700;">For the best odds and tips</h1>
-                    <p style="color: white;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque magni laborum numquam adipisci in ex ratione similique, hic rerum doloremque, animi asperiores nesciunt, eaque aspernatur? Repellendus a repellat beatae sapiente eos ea aperiam ad sunt delectus. Ad tenetur beatae recusandae.</p><br><br><br>
+                <!-- <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='300' height='250' src="https://refpasrasw.world/I?tag=d_723421m_48327c_&site=723421&ad=48327" ></iframe> -->
+                    <h1 style="font-weight: 800; color: brown; font-size: 32px;">Free football prediction website</h1>
+                    <!-- #FFD700 -->
+                    <p style="color: white;">Bet3ways provides Free football predictions, Tips of the day, Single Bets, e.t.c.. Bet3ways is the best source of free football tips and one of the top best football prediction site on the internet that provides sure soccer predictions.</p><p class="text-white">We provide you with a wide range of accurate predictions you can rely on. Our unique interface makes it easy for the users to browse easily both on desktop and mobile for online sports gambling. If you are looking for sites that predict football matches correctly, Bet3ways is the Best Football Prediction Website in the world.</p><br><br><br>
                     <!-- <a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a> -->
                 </div>
             </div>
             <div class="col-lg-2"></div>
-            <div class="col-lg-4">
+            <div class="col-lg-4" style="margin-top: 10rem;">
                 <div class="container">
                     <form action="./index.php" method="post">
                         <!-- <h1 style="font-size: 44px; color: white;">Create an Account</h1><br> -->
@@ -367,7 +470,7 @@
 
     <div style="min-height: 200px; margin-bottom: 100px;" class="mt-5">
         <div class="container">
-
+            <div class="mySectionToMin">
             <!-- Trigger/Open The Modal -->
             <button id="myBtn" class="btn btn-mini btn-success d-none">Open Modal</button>
 
@@ -377,52 +480,46 @@
                     <!-- Modal content -->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2>Top Betting Sites</h2>                           
+                            <h1>GET FREE BETTING MONEY</h1>                           
                             <span class="close">&times;</span>
                         </div>
                         <div class="modal-body">
-                                <table>
+                                <table class="table-bordered table-striped modal-table">
                                     <tbody>
-                                        <tr style="margin-bottom: 20px;">
-                                            <td><a class="d-flex justify-content-center align-items-center" href="https://m.22bet.co.ke/?tag=d_723421m_32751c_"><img style="width: 30%;" class="img-fluid" src="images/22Bet_1.JPG" alt="Image Here"/></a></td>
-                                            <td><div class="d-flex justify-content-center" style="align-self: center; padding-top: 25px;"><a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_">22Bet</a></div></td>
-                                            <td><span class="btn bg-warning">Get Bonus</span></td>
+                                        <tr>
+                                            <td style="padding: 1rem;"><a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_" target="_blank" style="text-decoration: none;"><img class="img-fluid" style="width: 30%;" src="images/22Bet_1.JPG" alt="Image Here"/></a></td>
+                                            <td class="myBonus" style="padding-top: 10px;"><a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_" class="text-center" target="_blank" style="text-decoration: none;"><span style="margin-top: 1rem; margin-bottom: -10px; color: red; font-size: 15px;">₦ 50,000<br></span><span class="btn bg-warning td_bonus">Get Bonus</span></a></td>
                                         </tr>
-                                        <tr style="padding-bottom: 20px;">
-                                            <td><a class="d-flex justify-content-center align-items-center" href="https://m.22bet.co.ke/?tag=d_723421m_32751c_"><img style="width: 30%;" class="img-fluid" src="images/22Bet_1.JPG" alt="Image Here"/></a></td>
-                                            <td><div class="d-flex justify-content-center" style="align-self: center; padding-top: 25px;"><a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_">AlphaBet</a></div></td>
-                                            <td><span class="btn bg-warning">Get Bonus</span></td>
+                                        <tr>
+                                            <td><a href="https://www.betway.co.ke/?btag-P77487-PR23169-CM63192-TS271152" target="_blank" style="text-decoration: none;"><img class="img-fluid" style="width: 30%;" src="./images/betway.png" alt="Image Here"/></a></td>
+                                            <td class="myBonus" style="padding-top: 10px;"><a href="https://www.betway.co.ke/?btag-P77487-PR23169-CM63192-TS271152_" class="text-center" target="_blank" style="text-decoration: none;"><span style="margin-top: 1rem; margin-bottom: -10px; color: red; font-size: 15px;">₦ 100,000<br></span><span class="btn bg-warning td_bonus">Get Bonus</span></a></td>
                                         </tr>
-                                        <tr style="padding-bottom: 20px;">
-                                            <td style="width: 40%;"><a class="d-flex justify-content-center align-items-center" href="https://m.22bet.co.ke/?tag=d_723421m_32751c_"><img style="width: 30%;" class="img-fluid" src="images/22Bet_1.JPG" alt="Image Here"/></a></td>
-                                            <td><div class="d-flex justify-content-center" style="align-self: center; padding-top: 25px;"><a href="22bet.com">BetNaija</a></div></td>
-                                            <td><span class="btn bg-warning">Get Bonus</span></td>
+                                        <tr>
+                                            <td><a href="https://melbet.ke/?tag=d_730661m_" target="_blank" style="text-decoration: none;"><img class="img-fluid" style="width: 30%;" src="./images/melbet.jfif" alt="Image Here"/></a></td>
+                                            <td class="myBonus" style="padding-top: 10px;"><a href="https://melbet.ke/?tag=d_730661m_" class="text-center" target="_blank" style="text-decoration: none;"><span style="margin-top: 1rem; margin-bottom: -10px; color: red; font-size: 15px;">₦ 2,000<br></span><span class="btn bg-warning td_bonus">Get Bonus</span></a></td>
                                         </tr>
-                                        <tr style="padding-bottom: 20px;">
-                                            <td><a class="d-flex justify-content-center align-items-center" href="https://www.sportpesa.com/"><img style="width: 30%;" class="img-fluid" src="images/sportPesa.JPG" alt="Image Here"/></a></td>
-                                            <td><div class="d-flex justify-content-center" style="align-self: center; padding-top: 25px;"><a href="22bet.com">SportPesa</a></div></td>
-                                            <td><span class="btn bg-warning">Get Bonus</span></td>
+                                        <tr>
+                                            <td><a href="https://1xbet.co.ke/?tag=d_1248161m_47149c_" target="_blank" style="text-decoration: none;"><img class="img-fluid" style="width: 30%;" src="./images/1x_bet.png" alt="Image Here"/></a></td>
+                                            <td class="myBonus" style="padding-top: 10px;"><a href="https://1xbet.co.ke/?tag=d_1248161m_47149c_" class="text-center" target="_blank" style="text-decoration: none;"><span style="margin-top: 1rem; margin-bottom: -10px; color: red; font-size: 15px;">₦ 100,000<br></span><span class="btn bg-warning td_bonus">Get Bonus</span></a></td>
                                         </tr>
-                                        <tr style="padding-bottom: 20px;">
-                                            <td><a class="d-flex justify-content-center align-items-center" href="https://betmoran.co.ke/betin-kenya/"><img style="width: 30%;" class="img-fluid" src="images/betmoran.png" alt="Image Here"/></a></td>
-                                            <td><div class="d-flex justify-content-center" style="align-self: center; padding-top: 25px;"><a href="22bet.com">Betmoran</a></div></td>
-                                            <td><span class="btn bg-warning">Get Bonus</span></td>
+                                            <td><a href="https://betwinner.com/" target="_blank" style="text-decoration: none;"><img class="img-fluid" style="width: 30%;" src="images/bet_winner.png" alt="Image Here"/></a></td>
+                                            <td class="myBonus" style="padding-top: 10px;"><a href="https://betwinner.com/" class="text-center" target="_blank" style="text-decoration: none;"><span style="margin-top: 1rem; margin-bottom: -10px; color: red; font-size: 15px;">₦ 100,000<br></span><span class="btn bg-warning td_bonus">Get Bonus</span></a></td>
                                         </tr>
-                                        <tr style="padding-bottom: 20px;">
-                                            <td><a class="d-flex justify-content-center align-items-center" href="https://www.sportpesa.com/"><img style="width: 30%;" class="img-fluid" src="images/sportPesa.JPG" alt="Image Here"/></a></td>
-                                            <td><div class="d-flex justify-content-center" style="align-self: center; padding-top: 25px;"><a href="22bet.com">SportPesa</a></div></td>
-                                            <td><span class="btn bg-warning">Get Bonus</span></td>
+                                        <tr>
+                                            <td><a href="https://1xbet.co.ke/?tag=d_1248161m_47149c_" target="_blank" style="text-decoration: none;"><img class="img-fluid" style="width: 30%;" src="./images/1x_bet.png" alt="Image Here"/></a></td>
+                                            <td width="50%" class="myBonus" style="padding-top: 10px;"><a href="https://1xbet.co.ke/?tag=d_1248161m_47149c_" class="text-center" target="_blank" style="text-decoration: none;"><span style="margin-top: 1rem; margin-bottom: -10px; color: red; font-size: 15px;">₦ 100,000<br></span><span class="btn bg-warning td_bonus">Get Bonus</span></a></td>
                                         </tr>
-                                        <tr style="marging-bottom: 30px;">
-                                            <td><a class="d-flex justify-content-center align-items-center" href="https://betmoran.co.ke/betin-kenya/"><img style="width: 30%;" class="img-fluid" src="images/betmoran.png" alt="Image Here"/></a></td>
-                                            <td><div class="d-flex justify-content-center" style="align-self: center; padding-top: 25px;"><a href="22bet.com">Betmoran</a></div></td>
-                                            <td><span class="btn bg-warning">Get Bonus</span></td>
-                                        </tr>
+
                                     </tbody>
                                 </table>
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
+
+            <div class="myFoter">
+                <!-- <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='300' height='250' src="https://refpasrasw.world/I?tag=d_723421m_48327c_&site=723421&ad=48327" href="https://22bet.com/?tag=d_723421m_48327c_&site=723421&ad=48327"></iframe>                 -->
             </div>
 
             <script>
@@ -469,45 +566,25 @@
             }
             </script>
 
-            <!-- Button trigger modal -->
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Launch demo modal
-            </button> -->
+                <div class="frames">
+                <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='320' height='80' src="https://refpasrasw.world/I?tag=d_723421m_32751c_&site=723421&ad=32751" ></iframe></div>
 
-            <!-- Modal -->
-            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <h1>Hello. This is the modal</h1>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- end div implementation -->
-
-            <!-- <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div> -->
-            <!-- <div class="row"> -->
-                <!-- <div class="col-md-3 pt-5">
-                    <div style="height: 200px; margin-top: 50px;"><img src="./images/messi_bt2.jpg" alt="bettingtips.com"></div>
-                    <div id="imgNoDisp" style="height: 300px; margin-bottom: 50px;"><img src="./images/sky_sports_1.jpg" alt="bettingtips.com"></div>
-                    <div id="imgNoDisp" style="height: 300px; margin-bottom: 50px;"><img src="./images/psg_play.jpg" alt="bettingtips.com"></div>
-                </div> -->
                 <div>                    
                     <div class="section sectionToMinBlack" id="mySection">
                         <div class="d-flex justify-content-center">
                             <span class="headers_min">LATEST TIPS</span><br><br>
                         </div>
+
+                        <script>
+                            var editBtn = document.getElementById('toClick');
+                            var iframe = document.getElementById('i_frame');
+
+                            iframe.addEventListener('click', clickedBtn);
+
+                            function clickedBtn(){
+                                editBtn.click();
+                            }
+                        </script>
                         <?php 
                             if (sizeof($prediction) < 3){?>
                                 <span class="d-flex justify-content-center"><h1>Sorry!! No tips are available at the moment</h1></span>
@@ -515,7 +592,7 @@
                         ?>
                         <table class="table table-striped text-black">
                             <thead>
-                                <th style="padding: 10px 20px;">League</th>
+                                <th id="notShow" style="padding: 10px 20px;">League</th>
                                 <th style="padding: 10px 20px;">Match</th>
                                 <th style="padding: 10px 20px;">Time</th>
                                 <th style="padding: 10px 20px;">Tip</th>
@@ -532,7 +609,7 @@
                                         // echo $a;
                                         ?>
                                         <tr>
-                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->league_name;?></td>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->league_name;?></td>
                                             <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_hometeam_name;?> <br> <?php echo $prediction[$a]->match_awayteam_name;?></td>
                                             <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_time;?></td>
                                             <td style="padding-top: 20px;"><?php 
@@ -546,7 +623,7 @@
                                                     // echo $prediction[2]->prob_D;
                                                     $predict = "<h1 style='border:4px solid brown; border-radius: 7px; text-align: center;'>X</h1>";
                                                 } ?><?php echo $predict;?></td>
-                                            <td style="padding-top: 20px;"><a href="#">More</a></td>
+                                            <td style="padding-top: 20px;"><a href="bet_view.php?matchID= <?php echo $prediction[$a]->match_id; ?>">More</a></td>
                                         </tr>
                                     <?php   } } }
                                 ?> 
@@ -556,42 +633,25 @@
                 </div>
             
             <div class="d-flex justify-content-center section sectionToMinBlack" style="margin:auto; padding-left:3rem; color:#000;">
-                <div style="margin: 40px 0; font-size: 24px;">
-                    <p>Untitled design35With new betting sites in Kenya coming up every other day, it is our job to help you pick the best site for you. No two bookies are alike and choosing the right one is crucial in determining your success. Using the right bookmaker is important because they usually have different odds, bonuses, betting options, betting markets and live betting features. It is also important to consider overlooked features such as cash out, user friendliness of the site, mobile apps etc. All these are important factors that all new and veteran bettors need to consider when picking the right site for them to use.
-                        
-                    Besides the main features, our team goes further to analyze important and often hidden information such as when the site was founded, complaints filed by other users, the trustworthiness of the site,  licenses held, and whether they have been banned by the government.
-
-                    Our reviews are written after analysis has been done by our team of expert sport bettors who are very passionate about sports betting. We are not employers of any betting site and our reviews uphold the highest level of integrity. Furthermore, our recommendations are based on the experience of our editors as well as those of our users. Feel free to include your opinion on any bookmaker listed by us by visiting our site reviews.</p>
+                <div style="margin: 1rem 0;">
+                    <h1 style="color: brown; padding-bottom: 2rem;">Real Football Prediction</h1>
+                        <p>Online sports betting can be real fun and the great thing is that you have a real, calculated chance to win much more than you invest initially. So, this being said, we welcome you on our attractive and clean platform, offering you all the information you need before placing your bets free. The beauty of free betting tips is that you can place multiple bets at once, so your chances of winning more money, do effectively increase. We have worked on creating an interface easy to use, with full information and multiple games that play that instant all around the world. You are not limited from this point of view and that`a a great advantage. We could also add the fact that the odds are carefully estimated for a great variety of sports, not only football.</p>
                 </div>
             </div>
                 <!-- Another Advert -->
-                <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>
+            <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" width="80%"/></a></div>
 
-                <div class="d-flex justify-content-center section sectionToMinBlack" style="margin:auto; padding-left:3rem; color:#000;">
-                    <div style="margin: 40px 0; font-size: 24px;">
-                        <h1 class="text-primary">FREE FOOTBALL PREDICTION SITE</h1>
-                        <p>At Bet3ways, we are passionate with making football punters across the globe make profit with our free football betting tips provided daily! Our team of expert analysts and tipsters work effortlessly to ensure football betting tips provided are safe to stake on. Free betting tips on Bet3ways include OVER 1.5, Double Chance, Potential Risk (High Odds), Upcoming Tips and Free Tipsters Tips no wonder Bet3ways.com is considered as the best free soccer prediction site in the world. Our simple and unique interface makes it easy for users to navigate through our website. We also provide match previews, reports and blog about everything football betting to enable our users get regular updates with the happenings in the world of football via our social media pages.</p>
-                    </div>
+            <div class="d-flex justify-content-center section sectionToMinBlack" style="margin:auto; padding-left:3rem; color:#000;">
+                <div style="margin: 1rem 0;">
+                    <!-- <h1 class="text-primary">FREE FOOTBALL PREDICTION SITE</h1> -->
+                    <p>We have always improved, in time, our technique regarding the odds and predictions of the upcoming sports matches, before they even begun playing. It`s not about what we feel about the game we set the value of a certain odd, but as we mentioned earlier, it`s all calculated, mathematically speaking, using algorithms, that some great specialists created, over the time. We could mention here Dixon and Coles econometric methods, used to set the values you see in the graphics of our websites interface.</p>
                 </div>
+            </div>
                                         
-            <!-- <div class="row">
-                <div class="col-md-3" id="notShow">                         -->
-                    <!-- <div style="height: 200px; margin-top: 50px;"><img src="./images/messi_bt2.jpg" alt="bettingtips.com"></div>
-                    <div id="imgNoDisp" style="height: 300px; margin-bottom: 50px;"><img src="./images/sky_sports_1.jpg" alt="bettingtips.com"></div>
-                    <div id="imgNoDisp" style="height: 300px; margin-bottom: 50px;"><img src="./images/psg_play.jpg" alt="bettingtips.com"></div> -->
-                    <?php 
-                        // var_dump($result);
-                        // for($a=0;$a<sizeof($result)-155;$a++){
-                        //     echo "<img src='".$result[$a]->country_logo."' alt='logo here' style='width:20%;'/>&nbsp;&nbsp;&nbsp;";
-                        //     echo "<a href='#'>".$result[$a]->country_name."</a><br><br>";
-                        // }
-                    ?>
-                <!-- </div>
-                <div class="col-md-9">        -->
                     <!-- Won/Previous Odds -->
                     <div class="section sectionToMinBlack">
                         <div class="d-flex justify-content-center">
-                            <span class="headers_min">Previous Tips</span><br><br>
+                            <span class="headers_min">LATEST WINNINGS</span><br><br>
                         </div>
 
                         <?php    
@@ -620,11 +680,11 @@
                         ?>
                         <table class="table table-striped text-black">
                             <thead>
-                                <th style="padding: 10px 20px;">League</th>
+                                <th id="notShow" style="padding: 10px 20px;">League</th>
                                 <th style="padding: 10px 20px;">Match</th>
                                 <th style="padding: 10px 20px;">Time</th>
                                 <th style="padding: 10px 20px;">Tip</th>
-                                <th></th>
+                                <!-- <th></th> -->
                             </thead>
 
                             <tbody>
@@ -637,7 +697,7 @@
                                         // echo $a;
                                         ?>
                                         <tr>
-                                            <td style="padding-top: 20px;"><?php echo $result[$a]->league_name;?></td>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $result[$a]->league_name;?></td>
                                             <td style="padding-top: 20px;"><?php echo $result[$a]->match_hometeam_name;?> - <br> <?php echo $result[$a]->match_awayteam_name;?></td>
                                             <td style="padding-top: 20px;"><?php echo $result[$a]->match_time;?></td>
                                             <td style="padding-top: 20px;"><?php 
@@ -651,7 +711,7 @@
                                                     // echo $prediction[2]->prob_D;
                                                     $predict = "<h1 style='border:4px solid brown; border-radius: 7px; text-align: center;'>X</h1>";
                                                 } ?><?php echo $predict;?></td>
-                                            <td style="padding-top: 20px;"><a href="#">More</a></td>
+                                            <!-- <td style="padding-top: 20px;"><a href="#">More</a></td> -->
                                         </tr>
                                     <?php   } } }
                                 ?> 
@@ -783,81 +843,20 @@
                 <span class="headers_min">OUR BLOGS</span><br><br>
             </div>
 
-            <div class="row section sectionToMin">
-                <div class="col-sm-6 col-md-4 mb-5">
-                    <a href ="./articles.php?articleID=1">
-                    <div class="cardYangu">
-                        <img class="card-img-top" src="./images/online_betting.jpg" alt="Card image cap" style="min-height:21rem;">
-                        <div class="card-body" style="text-align:center">
-                            <a class="card-text" href="#"><h1>Betting tips for beginners</h1></a>
-                        </div>
-                    </div></a>
-                </div>
-                <div class="col-sm-6 col-md-4 mb-5">
-                    <a href ="./articles.php?articleID=2">
-                    <div class="cardYangu">
-                        <img class="card-img-top" src="./images/betting-poker.png" alt="Card image cap" style="max-height:21rem;">
-                        <div class="card-body" style="text-align:center">
-                            <h1 class="card-text">How to check for the best odds online</h1>
-                        </div>
-                    </div></a>
-                    <!-- <div class="wrapper d-flex justify-content-center">
-                        <img src="./images/chevrolet_2.jpg" alt="img here" style="width: 30%;">
-                        <h1>HOW POLITICS AFFECTS BETTING</h1>
-                    </div> -->
-                </div>
-                <div class="col-sm-6 col-md-4 mb-5">
-                    <a href ="./articles.php?articleID=1">
-                    <div class="cardYangu">
-                        <img class="card-img-top" src="./images/gambling-addiction.png" alt="Card image cap" style="max-height:21rem;">
-                        <div class="card-body" style="text-align:center">
-                            <h1 class="card-text">Don't get addicted</h1>
-                        </div>
-                    </div></a>
-                    <!-- <div class="wrapper d-flex justify-content-center">
-                        <img src="DON'T GET ADDICTED" alt="img here" style="width: 30%;">
-                        <h1>DON'T GET ADDICTED</h1>
-                    </div> -->
-                </div>
-                <div class="col-sm-6 col-md-4 mb-5">
-                    <a href ="./articles.php?articleID=2">
-                    <div class="cardYangu">
-                        <img class="card-img-top" src="./images/cashout.jpg" alt="Card image cap" style="min-height:21rem;">
-                        <div class="card-body" style="text-align:center">
-                            <a class="card-text" href="#"><h1>Cashout Betting Strategy</h1></a>
-                        </div>
-                    </div></a>
-                    <!-- <div class="wrapper d-flex justify-content-center">
-                        <img src="./images/sky_sports.jpg" alt="img here" style="width: 30%;">
-                        <h1>BETTING TIPS FOR BEGINNERS</h1>
-                    </div> -->
-                </div>
-                <div class="col-sm-6 col-md-4 mb-5">
-                    <a href ="./articles.php?articleID=1">
-                    <div class="cardYangu">
-                        <img class="card-img-top" src="./images/prison-bookie.jpg" alt="Card image cap" style="min-height:21rem;">
-                        <div class="card-body" style="text-align:center">
-                            <a class="card-text" href="#"><h1>How politics affects betting</h1></a>
-                        </div>
-                    </div></a>
-                    <!-- <div class="wrapper d-flex justify-content-center">
-                        <img src="./images/chevrolet_2.jpg" alt="img here" style="width: 30%;">
-                        <h1>HOW POLITICS AFFECTS BETTING</h1>
-                    </div> -->
-                </div>
-                <div class="col-sm-6 col-md-4 mb-5">
-                    <a href ="./articles.php?articleID=1">
-                    <div class="cardYangu">
-                        <img class="card-img-top" src="./images/sports-efl.jpg" alt="Card image cap" style="min-height:21rem;">
-                        <div class="card-body" style="text-align:center">
-                            <a class="card-text" href="#"><h1>Introduction to Esports betting</h1></a>
-                        </div>
-                    </div></a>
-                    <!-- <div class="wrapper d-flex justify-content-center">
-                        <img src="DON'T GET ADDICTED" alt="img here" style="width: 30%;">
-                        <h1>DON'T GET ADDICTED</h1>
-                    </div> -->
-                </div>
+            <div class="row">
+                <?php
+                    foreach($row_articles as $article){ ?>
+                        <!-- // echo "<a href='./articles.php?articleID=$article->id'><h2>$article->title</h2></a><hr>"; -->
+                    <div class="col-sm-6 col-lg-4">
+                        <a href ="./articles.php?articleID=<?php echo $article->id;?>" class="d-flex justify-content-center">
+                        <div class="cardYangu">
+                            <img class="card-img-top" src="<?php echo $article->image_src;?>" alt="Card image cap" style="min-height:21rem; max-height:21rem;">
+                            <div class="card-body" style="text-align:center">
+                                <h1 class="card-text"><?php echo $article->title;?></h1>
+                            </div>
+                        </div></a>
+                    </div>
+                <?php }?>
             </div>
         </div>
         <div style="width:80%; margin:auto;">
@@ -887,7 +886,7 @@
         </div>
     </div>
         <div class="container" style="min-height: 200px;">
-            <div class="row">
+            <div class="row bottomLink">
                 <div class="col-md-6" style="margin-bottom: 7rem;">
                     <h1>USEFUL LINKS</h1><hr style="width:10%; background-color: #C13333; margin-bottom: 2rem;">
                     <?php 
@@ -908,9 +907,8 @@
                         foreach($row_articles as $article){
                             echo "<a href='./articles.php?articleID=$article->id'><h2>$article->title</h2></a><hr>";
                         }?>
-                    <a href=""><h2>BETTING SITES WITH GOOD ODDS</h2></a><hr>
-                    <a href=""><h2>HOW TO STOP LOSING IN SPORT BETTING</h2></a><hr>
-                    <a href="policy.php"><h2>PRIVACY POLICY</h2></a><hr>
+                    <!-- <a href=""><h2>HOW TO STOP LOSING IN SPORT BETTING</h2></a><hr>
+                    <a href="policy.php"><h2>PRIVACY POLICY</h2></a><hr> -->
                 </div>
             </div>
         </div>
@@ -929,8 +927,8 @@
                 </div>
                 <div class="footer-center">
                     <h3>INFORMATION</h3>
-                    <a href="#">About Us</a>
-                    <a href="#">Privacy Policy</a>
+                    <a href="./about.php">About Us</a>
+                    <a href="policy.php">Privacy Policy</a>
                     <a href="#">Terms & Conditions</a>
                     <a href="#">Contact Us</a>
                     <a href="#">Site Map</a>

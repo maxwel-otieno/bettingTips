@@ -45,12 +45,138 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,900;1,600&display=swap" rel="stylesheet">
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="./css/stylesheet.css">
-    <title>Tips</title>
+    <title>Bet3ways | Tips</title>
 
     <style>
+        .headers_min{
+            font-size: 30px;
+            letter-spacing: 2px;
+            color: #8DC360; 
+            border: 3px solid #8DC360; 
+            padding: 10px 30px; 
+            margin-bottom: 4rem;
+        }
+        .frames{
+            display: none;
+        }
+        .myFooter{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* PROMO */
+        .advert_promo{
+            width:100%;
+            background-color:orange;
+            border-radius:5px;
+            margin: auto;
+            margin-top: 1rem;
+            padding: 10px;
+        }
+        .advert_promo img{
+            width: 30rem;
+            margin-top: -10px;
+        }
+        #promo_code{
+            background-color: orange;
+            border: 4px solid grey;
+            color: grey;
+            font-size: 16px;
+        }
+        #promo_code:hover{
+            background-color: #f4f4f4;
+            border: none;
+            color: grey;
+        }
+        .bonus_amt{
+            padding-top: 4rem;
+            color: #C13333; 
+            font-size: 31px; 
+            font-weight: 500;
+            letter-spacing: 1.5px;
+        }
+        #get_bonus{
+            position:relative;
+            bottom: -5px;
+            width: 80%;
+            margin-left:10%;
+            margin-bottom: 5%;
+            background-color:#C13333;
+            border-radius: 30px;
+            font-size: 18px;
+            text-decoration: none; 
+            font-family: 'Times New Roman', Times, serif;
+        }
+        #get_bonus:hover{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        @media only screen and (max-width: 978px){            
+            .advert_promo{
+                width: 100%;
+                /* min-height: 600px; */
+            }
+        }
+
         @media only screen and (max-width: 768px){
             #notShow{
                 display: none;
+            }
+            .headers_min{
+                font-size: 14px;
+                /* color: white; */
+            }
+        }
+
+        @media only screen and (max-width: 567px){
+            .frames{
+                display: block;
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                z-index: 9999;
+            }
+            .container{
+                width: 100% !important;
+            }
+            .bottomLink h1{
+                font-size: 18px;
+            }
+            .bottomLink h2{
+                font-size: 14px;
+            }
+
+            /*Advert */
+            .advert_promo img{
+                width:20rem !important;
+                /* margin-top: -20px; */
+                /* margin:0; */
+            }
+            .bonus_amt{
+                text-align: center;
+                color: #C13333; 
+                font-size: 25px; 
+                padding: 0;
+                margin-top: -30px;
+                font-weight: 500;
+                letter-spacing: 0px;
+            }
+            #get_bonus{
+                font-size: 12px;
+                border-radius: 40px;
+                padding: 10px 10px;
+            }
+            #promo_code{
+                background-color: orange;
+                border: 2px solid grey;
+                color: grey;
+                font-size: 13px;
+                text-align: center;
+                padding: 5px 10px;
             }
         }
     </style>
@@ -62,12 +188,12 @@
         <nav class="nav">
             <div class="navigation container">
                 <div class="logo">
-                    <h1>Betting <span style="color: brown; font-size: 25dp;">Tips</span></h1>
+                    <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
                 </div>
                 <div class="menu">
                     <div class="top-nav">
                         <div class="logo">
-                            <h1>Betting <span style="color: brown; font-size: 25dp;">Tips</span></h1>
+                            <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
                         </div>
                         <div class="close">
                             <i class='bx bx-x' ></i>
@@ -78,30 +204,29 @@
                         <li class="nav-item">
                             <a href="index.php" class="nav-link scroll-link">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a href="./tips.php" style="color:brown;" class="nav-link scroll-link">Tips</a>
                         </li>
                         <li class="nav-item">
                             <a href="./livescore.php" class="nav-link scroll-link">Livescore</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#about" class="nav-link scroll-link">About</a>
+                            <a href="./about.php" class="nav-link scroll-link">About</a>
                         </li>
                         <li class="nav-item">
                             <a href="./login.php" class="nav-link scroll-link">Login</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="./index.php" class="nav-link scroll-link">Create Account</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a href="./vipsite.php" class="nav-link scroll-link" style="color: brown; padding: 0.3rem 1.8rem; background-color: gold; border: 1px solid #f4f4f4; font-weight: bold;">VVIP</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a href="cart.html" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
                         </li> -->
                     </ul>
                 </div>
-<!-- 
-                <a href="cart.html" class="cart-icon">
-                    <i class="bx bx-shopping-bag"></i>
-                </a> -->
 
                 <div class="hamburger">
                     <i class="bx bx-menu"></i>
@@ -194,22 +319,46 @@
 
     </header>
 
-    <div style="min-height: 200px; margin-bottom: 100px;" class="mt-1">
+    <div>
         <div class="container">
-            <!-- <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div> -->
-            <div class="row">
-                <div class="col-md-3 pt-5">
-                    <div id="imgNoDisp" style="height: 200px; margin-top: 50px;"><img src="./images/messi_bt2.jpg" alt="bettingtips.com"></div>
-                    <div id="imgNoDisp" style="height: 300px; margin-bottom: 50px;"><img src="./images/sky_sports_1.jpg" alt="bettingtips.com"></div>
-                    <div id="imgNoDisp" style="height: 300px; margin-bottom: 50px;"><img src="./images/psg_play.jpg" alt="bettingtips.com"></div>
-                </div>
-                <div class="col-md-9">                    
-                    <div class="section sectionToMinBlack" id="mySection">
-                    <!-- <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='620' height='200' src="https://m.22bet.co.ke/?tag=d_723421m_32751c_" ><img src="images/22Bet_1.JPG" alt="22Bet Image"></iframe> -->
-                        <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='700' height='90' src="https://refpasrasw.world/I?tag=d_723421m_47685c_&site=723421&ad=47685" ></iframe>
-                        <!-- <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='495' height='130' src="https://melbanusd.top/I?tag=d_730661m_43501c_&site=730661&ad=43501" ><img src="images/22Bet_1.JPG" alt="22Bet Image"></iframe> -->
+            <div class="advert_promo" style="padding-bottom: 20px;">
+                <div class="row" style="padding:0;">
+                    <!-- <div class="col-lg-2"></div> -->
+                    <div class="col-lg-6 p-5">
                         <div class="d-flex justify-content-center">
-                            <h1 style="font-size: 30px; letter-spacing: 2px; color: #8DC360; border: 3px solid #8DC360; padding: 10px 30px; margin-bottom: 4rem;">LATEST TIPS</h1><br>
+                            <div>
+                            <a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_" style="cursor: pointer;"><img src="./images/22bet-logo.PNG" alt="" style=""></a><br>
+                            <!-- <a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_" style="color: brown; font-weight: bold;text-align: center;margin: auto;">Full Review</a><br><hr style="margin: auto;background-color: brown; width: 10%; text-align: center;"> --></div>
+                        </div>
+                        <!-- <div class="d-flex justify-content-center">
+                            <a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_" style="cursor: pointer; color: brown; font-weight: bold;">Full Rreview</a><br><hr style="margin-top: -2px;background-color: brown; width: 10%; text-align: center;">
+                        </div> -->
+                    </div>
+                    <div class="col-lg-6 p-5">
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <h1 class="bonus_amt">GET KSH 200 BONUS</h1>
+                                <div style="text-align: center;">
+                                <button class="btn" style="" id="promo_code">PROMO CODE : 22_326807</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-block" id="get_bonus"><a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_" style="text-decoration:none; color: white;">GET YOUR BONUS</a></button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">                    
+                    <div class="section sectionToMinBlack" id="mySection">
+
+                        <div class="frames">
+                        <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='320' height='80' src="https://refpasrasw.world/I?tag=d_723421m_47685c_&site=723421&ad=47685" ></iframe></div>
+
+                        <div class="d-flex justify-content-center">
+                            <span class="headers_min">LATEST TIPS</span><br><br>
                         </div>
                         <?php 
                             if (sizeof($prediction) < 3){?>
@@ -218,25 +367,47 @@
                         ?>
                         <table class="table">
                             <thead>
-                                <th style="padding: 10px 20px;">Country</th>
-                                <th style="padding: 10px 20px;">League</th>
+                                <th id="notShow" style="padding: 10px 20px;">Country</th>
+                                <th id="notShow" style="padding: 10px 20px;">League</th>
                                 <th style="padding: 10px 20px;">Match</th>
                                 <th style="padding: 10px 20px;">Time</th>
                                 <!-- <th style="padding: 10px 20px;">Odds</th> -->
                                 <th class="active" style="padding: 10px 20px;">Tip</th>
-                                <!-- <th></th> -->
+                                <th></th>
                             </thead>
-
                             <tbody>
-                                <?php
-                                    for($a=0; $a<11;$a++){
+                            <?php
+
+                            //TRIAL FOR MID-TIP ADVERTS
+                                // $entry_num = sizeof($prediction);
+                                // $interval = 15;
+                                // $iterations = floor($entry_num/$interval);
+                                // $remainder = $entry_num%$interval;
+
+                                // // echo $iterations."<br>";
+                                // // echo "Remainder = ".$remainder."<br>";
+                                // for($a=0; $a<$iterations; $a++){
+                                //     $i = ($a*15);                   
+                                //     for($b=$i; $b<($i+15); $b++){
+                                //         echo " ".$b;
+                                //     }
+                                //     echo "<br>My name is Maxwel<br>";
+                                // }
+                                // $last_num = $interval*$iterations;
+                                // // echo $last_num;
+                                // for($c=$last_num; $c<$entry_num; $c++){
+                                //     echo "<br>".$c;
+                                // }
+
+
+                                    for($a=1; $a<15; $a++){
                                         if($prediction[$a]->match_status != "Finished"){
                                             // if($prediction[$a]->league_name == "FKF Premier League" || ($prediction[$a]->country_name == "England" && $prediction[$a]->league_name == "Premier League")){
                                         // echo $a;
                                         ?>
                                         <tr>
-                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->country_name;?></td>
-                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->league_name;?></td>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->country_name;?></td>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->league_name;?></td>
                                             <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_hometeam_name;?> - <?php echo $prediction[$a]->match_awayteam_name;?></td>
                                             <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_time;?></td>
                                             <!-- <td style="padding-top: 20px;">
@@ -252,139 +423,233 @@
                                                     // echo $prediction[2]->prob_D;
                                                     $predict = "<h1 style='border:4px solid brown; border-radius: 7px; text-align: center;'>X</h1>";
                                                 } ?><h1><?php echo $predict;?></h1></td>
-                                            <!-- <td style="padding-top: 20px;"><a href="#">More</a></td> -->
+                                            <td style="padding-top: 20px;"><a href="bet_view.php?matchID= <?php echo $prediction[$a]->match_id; ?>">More</a></td>
                                         </tr>
-                                   <?php } } }
+                                   <?php } 
+                                }
                                 ?> 
                             </tbody>
-                        </table>
+                        </table><br><br>
+                        <div class="text-center" style="overflow:hidden;">
+                        <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none; margin-bottom: 4rem;' width='728' height='90' src="https://refbanners.com/I?tag=d_1248161m_47153c_&site=1248161&ad=47153" ></iframe></div>
+                        
+                        <table class="table">
+                            <tbody>
+                                <?php
+                                    for($a=12; $a<30; $a++){
+                                        if($prediction[$a]->match_status != "Finished"){
+                                            // if($prediction[$a]->league_name == "FKF Premier League" || ($prediction[$a]->country_name == "England" && $prediction[$a]->league_name == "Premier League")){
+                                        // echo $a;
+                                        ?>
+                                        <tr>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->country_name;?></td>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->league_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_hometeam_name;?> - <?php echo $prediction[$a]->match_awayteam_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_time;?></td>
+                                            <!-- <td style="padding-top: 20px;">
+                                                2.00 | 3.15 | 2.80</td> -->
+                                            <td style="padding-top:20px;"><?php 
+                                                if ($prediction[$a]->prob_HW > $prediction[$a]->prob_D && $prediction[$a]->prob_HW > $prediction[$a]->prob_AW){
+                                                    // echo "<br>".$prediction[2]->prob_HW;
+                                                    $predict = "<h1 style='border:4px solid green; border-radius: 7px; text-align: center; padding:0px 10px;'>1</h1>";
+                                                }else if($prediction[$a]->prob_AW > $prediction[$a]->prob_HW && $prediction[$a]->prob_AW > $prediction[$a]->prob_D){
+                                                    // echo "<br>".$prediction[2]->prob_AW;
+                                                    $predict = "<h1 style='border:4px solid black; border-radius: 7px; text-align: center;'>2</h1>";
+                                                }else{
+                                                    // echo $prediction[2]->prob_D;
+                                                    $predict = "<h1 style='border:4px solid brown; border-radius: 7px; text-align: center;'>X</h1>";
+                                                } ?><h1><?php echo $predict;?></h1></td>
+                                            <td style="padding-top: 20px;"><a href="bet_view.php?matchID= <?php echo $prediction[$a]->match_id; ?>">More</a></td>
+                                        </tr>
+                                    <?php } 
+                                }
+                                ?> 
+                            </tbody>
+                        </table><br><br>
+                        <div class="text-center" style="overflow: hidden;">
+                        <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:auto; border:0px;border-style:none;border-style:none; margin-bottom: 4rem;' width='700' height='90' src='https://refpasrasw.world/I?tag=d_723421m_47685c_&site=723421&ad=47685' ></iframe></div>
+                        
+                        <table class="table">
+                            <tbody>
+                                <?php
+                                    for($a=30; $a<45; $a++){
+                                        if($prediction[$a]->match_status != "Finished"){
+                                            // if($prediction[$a]->league_name == "FKF Premier League" || ($prediction[$a]->country_name == "England" && $prediction[$a]->league_name == "Premier League")){
+                                        // echo $a;
+                                        ?>
+                                        <tr>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->country_name;?></td>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->league_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_hometeam_name;?> - <?php echo $prediction[$a]->match_awayteam_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_time;?></td>
+                                            <!-- <td style="padding-top: 20px;">
+                                                2.00 | 3.15 | 2.80</td> -->
+                                            <td style="padding: 10px 20px;"><?php 
+                                                if ($prediction[$a]->prob_HW > $prediction[$a]->prob_D && $prediction[$a]->prob_HW > $prediction[$a]->prob_AW){
+                                                    // echo "<br>".$prediction[2]->prob_HW;
+                                                    $predict = "<h1 style='border:4px solid green; border-radius: 7px; text-align: center; padding:0px 10px;'>1</h1>";
+                                                }else if($prediction[$a]->prob_AW > $prediction[$a]->prob_HW && $prediction[$a]->prob_AW > $prediction[$a]->prob_D){
+                                                    // echo "<br>".$prediction[2]->prob_AW;
+                                                    $predict = "<h1 style='border:4px solid black; border-radius: 7px; text-align: center;'>2</h1>";
+                                                }else{
+                                                    // echo $prediction[2]->prob_D;
+                                                    $predict = "<h1 style='border:4px solid brown; border-radius: 7px; text-align: center;'>X</h1>";
+                                                } ?><h1><?php echo $predict;?></h1></td>
+                                            <td style="padding-top: 20px;"><a href="bet_view.php?matchID= <?php echo $prediction[$a]->match_id; ?>">More</a></td>
+                                        </tr>
+                                    <?php } 
+                                }
+                                ?> 
+                            </tbody>
+                        </table><br><br>
+                        <div class="text-center" style="overflow: hidden;">
+                        <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:auto; border:0px;border-style:none;border-style:none; margin-bottom: 4rem;' width='700' height='150' src='https://melbanusd.top/I?tag=d_730661m_43501c_&site=730661&ad=43501' ></iframe></div>
+                        
+                        <table class="table">
+                            <tbody>
+                                <?php
+                                    for($a=45; $a<60; $a++){
+                                        if($prediction[$a]->match_status != "Finished"){
+                                            // if($prediction[$a]->league_name == "FKF Premier League" || ($prediction[$a]->country_name == "England" && $prediction[$a]->league_name == "Premier League")){
+                                        // echo $a;
+                                        ?>
+                                        <tr>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->country_name;?></td>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->league_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_hometeam_name;?> - <?php echo $prediction[$a]->match_awayteam_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_time;?></td>
+                                            <!-- <td style="padding-top: 20px;">
+                                                2.00 | 3.15 | 2.80</td> -->
+                                            <td style="padding: 10px 20px;"><?php 
+                                                if ($prediction[$a]->prob_HW > $prediction[$a]->prob_D && $prediction[$a]->prob_HW > $prediction[$a]->prob_AW){
+                                                    // echo "<br>".$prediction[2]->prob_HW;
+                                                    $predict = "<h1 style='border:4px solid green; border-radius: 7px; text-align: center; padding:0px 10px;'>1</h1>";
+                                                }else if($prediction[$a]->prob_AW > $prediction[$a]->prob_HW && $prediction[$a]->prob_AW > $prediction[$a]->prob_D){
+                                                    // echo "<br>".$prediction[2]->prob_AW;
+                                                    $predict = "<h1 style='border:4px solid black; border-radius: 7px; text-align: center;'>2</h1>";
+                                                }else{
+                                                    // echo $prediction[2]->prob_D;
+                                                    $predict = "<h1 style='border:4px solid brown; border-radius: 7px; text-align: center;'>X</h1>";
+                                                } ?><h1><?php echo $predict;?></h1></td>
+                                            <td style="padding-top: 20px;"><a href="bet_view.php?matchID= <?php echo $prediction[$a]->match_id; ?>">More</a></td>
+                                        </tr>
+                                    <?php } 
+                                }
+                                ?> 
+                            </tbody>
+                        </table><br><br>
+                        <div class="text-center" style="overflow: hidden;">
+                        <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:auto; border:0px;border-style:none;border-style:none; margin-bottom: 4rem;' width='700' height='90' src='https://refpasrasw.world/I?tag=d_723421m_47685c_&site=723421&ad=47685' ></iframe></div>
+                        
+                        <table class="table">
+                            <tbody>
+                                <?php
+                                    for($a=60; $a<75; $a++){
+                                        if($prediction[$a]->match_status != "Finished"){
+                                            // if($prediction[$a]->league_name == "FKF Premier League" || ($prediction[$a]->country_name == "England" && $prediction[$a]->league_name == "Premier League")){
+                                        // echo $a;
+                                        ?>
+                                        <tr>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->country_name;?></td>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->league_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_hometeam_name;?> - <?php echo $prediction[$a]->match_awayteam_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_time;?></td>
+                                            <!-- <td style="padding-top: 20px;">
+                                                2.00 | 3.15 | 2.80</td> -->
+                                            <td style="padding: 10px 20px;"><?php 
+                                                if ($prediction[$a]->prob_HW > $prediction[$a]->prob_D && $prediction[$a]->prob_HW > $prediction[$a]->prob_AW){
+                                                    // echo "<br>".$prediction[2]->prob_HW;
+                                                    $predict = "<h1 style='border:4px solid green; border-radius: 7px; text-align: center; padding:0px 10px;'>1</h1>";
+                                                }else if($prediction[$a]->prob_AW > $prediction[$a]->prob_HW && $prediction[$a]->prob_AW > $prediction[$a]->prob_D){
+                                                    // echo "<br>".$prediction[2]->prob_AW;
+                                                    $predict = "<h1 style='border:4px solid black; border-radius: 7px; text-align: center;'>2</h1>";
+                                                }else{
+                                                    // echo $prediction[2]->prob_D;
+                                                    $predict = "<h1 style='border:4px solid brown; border-radius: 7px; text-align: center;'>X</h1>";
+                                                } ?><h1><?php echo $predict;?></h1></td>
+                                            <td style="padding-top: 20px;"><a href="bet_view.php?matchID= <?php echo $prediction[$a]->match_id; ?>">More</a></td>
+                                        </tr>
+                                    <?php } 
+                                }
+                                ?> 
+                            </tbody>
+                        </table><br><br>
+                        <div class="text-center" style="overflow: hidden;margin-bottom: 4rem;">
+                        <a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/"  alt="" /></a></div>
+                        
+                        <table class="table">
+                            <tbody>
+                                <?php
+                                    for($a=75; $a<90; $a++){
+                                        if($prediction[$a]->match_status != "Finished"){
+                                            // if($prediction[$a]->league_name == "FKF Premier League" || ($prediction[$a]->country_name == "England" && $prediction[$a]->league_name == "Premier League")){
+                                        // echo $a;
+                                        ?>
+                                        <tr>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->country_name;?></td>
+                                            <td id="notShow" style="padding-top: 20px;"><?php echo $prediction[$a]->league_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_hometeam_name;?> - <?php echo $prediction[$a]->match_awayteam_name;?></td>
+                                            <td style="padding-top: 20px;"><?php echo $prediction[$a]->match_time;?></td>
+                                            <!-- <td style="padding-top: 20px;">
+                                                2.00 | 3.15 | 2.80</td> -->
+                                            <td style="padding: 10px 20px;"><?php 
+                                                if ($prediction[$a]->prob_HW > $prediction[$a]->prob_D && $prediction[$a]->prob_HW > $prediction[$a]->prob_AW){
+                                                    // echo "<br>".$prediction[2]->prob_HW;
+                                                    $predict = "<h1 style='border:4px solid green; border-radius: 7px; text-align: center; padding:0px 10px;'>1</h1>";
+                                                }else if($prediction[$a]->prob_AW > $prediction[$a]->prob_HW && $prediction[$a]->prob_AW > $prediction[$a]->prob_D){
+                                                    // echo "<br>".$prediction[2]->prob_AW;
+                                                    $predict = "<h1 style='border:4px solid black; border-radius: 7px; text-align: center;'>2</h1>";
+                                                }else{
+                                                    // echo $prediction[2]->prob_D;
+                                                    $predict = "<h1 style='border:4px solid brown; border-radius: 7px; text-align: center;'>X</h1>";
+                                                } ?><h1><?php echo $predict;?></h1></td>
+                                            <td style="padding-top: 20px;"><a href="bet_view.php?matchID= <?php echo $prediction[$a]->match_id; ?>">More</a></td>
+                                        </tr>
+                                    <?php } 
+                                }
+                                ?> 
+                            </tbody>
+                        </table><br><br>
+                        <div class="text-center" style="overflow: hidden;">
+                        <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none; margin-bottom: 2rem;' width='728' height='90' src="https://refbanners.com/I?tag=d_1248161m_47153c_&site=1248161&ad=47153" ></iframe></div>
+
+                            <?php } ?>
+
+                        
                     </div>       <!--Current odds preview section end --> 
 
-                    <!-- Another Advert -->
-                    <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div>         
-
-                    <!-- Another Advert -->
-                    <!-- <div class="d-flex justify-content-center" style="margin:auto;"><a href="https://www.betway.co.ke/?btag=P77487-PR23747-CM67345-TS271152"; target="_blank" rel="nofollow"><img src="https://secure.betwaypartnersafrica.com/imagehandler/bf3af941-a798-4963-aea7-bb6c0e81f606/" alt="" /></a></div> -->
-
-                    <!-- Premium Odds -->
-                    <div class="section sectionToMinBlack">
-                        <div class="d-flex justify-content-center">
-                            <span style="font-size: 30px; letter-spacing: 2px; color: #8DC360; border: 3px solid #8DC360; padding: 10px 30px; margin-bottom: 4rem;">PREMIUM TIPS</span><br><br>
-                        </div>
-                        <table class="table table-striped">
-                            <thead>
-                                <th id="toClose" style="padding: 10px 0px;">League</th>
-                                <th style="padding: 10px 0px;">Match</th>
-                                <th style="padding: 10px 0px;">Time</th>
-                                <th style="padding: 10px 0px;">Odds</th>
-                                <th style="padding: 10px 0px;">Tip</th>
-                                <!-- <th></th> -->
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">English Premier League</td>
-                                    <td style="padding-top: 20px;">Juventus - Chelsea</td>
-                                    <td style="padding-top: 20px;">20:00</td>
-                                    <td style="padding-top: 20px;">2.00 | 3.15 | 2.80</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Othaya Youth League</td>
-                                    <td style="padding-top: 20px;">Cumbaya FC - Chacaritas FC</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>D</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">UEFA Champions League</td>
-                                    <td style="padding-top: 20px;">Bayern Munich - Dynamo Kyiv</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Champions League</td>
-                                    <td style="padding-top: 20px;">Benfica - Barcelona</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>A</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">English Premier League</td>
-                                    <td style="padding-top: 20px;">Juventus - Chelsea</td>
-                                    <td style="padding-top: 20px;">20:00</td>
-                                    <td style="padding-top: 20px;">2.00 | 3.15 | 2.80</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Othaya Youth League</td>
-                                    <td style="padding-top: 20px;">Cumbaya FC - Chacaritas FC</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>D</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">UEFA Champions League</td>
-                                    <td style="padding-top: 20px;">Bayern Munich - Dynamo Kyiv</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Champions League</td>
-                                    <td style="padding-top: 20px;">Benfica - Barcelona</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>A</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">English Premier League</td>
-                                    <td style="padding-top: 20px;">Juventus - Chelsea</td>
-                                    <td style="padding-top: 20px;">20:00</td>
-                                    <td style="padding-top: 20px;">2.00 | 3.15 | 2.80</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Othaya Youth League</td>
-                                    <td style="padding-top: 20px;">Cumbaya FC - Chacaritas FC</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>D</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">UEFA Champions League</td>
-                                    <td style="padding-top: 20px;">Bayern Munich - Dynamo Kyiv</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>H</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td id="toClose" style="padding-top: 20px;">Champions League</td>
-                                    <td style="padding-top: 20px;">Benfica - Barcelona</td>
-                                    <td style="padding-top: 20px;">17:30</td>
-                                    <td style="padding-top: 20px;">1.20 | 9.05 | 21.00</td>
-                                    <td style="padding-top: 20px;"><h1>A</h1></td>
-                                    <!-- <td style="padding-top: 20px;"><a style=" background-color: grey; padding: 5px 10px; border-radius: 5px; color: white; text-decoration: none;" href="#">View</a></td> -->
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+        <div class="container">
+            <div class="row bottomLink">
+                <div class="col-md-6" style="margin-bottom: 7rem;">
+                    <h1>USEFUL LINKS</h1><hr style="width:10%; background-color: #C13333; margin-bottom: 2rem;">
+                    <?php 
+                        // foreach($row_articles as $article){
+                        //     print_r($article->title);
+                        // }
+                    ?>
+                    <a href=""><h2>HOW TO WORK AND EARN ONLINE</h2></a><hr>
+                    <a href=""><h2>BEST WAY OF MAKING MONEY WITH FOOTBALL BETTING</h2></a><hr>
+                    <a href=""><h2>BEST FOOTBALL PREDICTION SITES?</h2></a><hr>
+                    <a href=""><h2>BEST SOCCER PREDICTION SITE FOR FIXED MATCHES?</h2></a><hr>
+                    <a href=""><h2>FOOTBALL BETTING GUIDE</h2></a><hr>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-5" style="margin-bottom: 7rem;">
+                    <h1>USEFUL ATRICLES</h1><hr style="width:10%; font-weight: bold; background-color: #C13333; margin-bottom: 2rem;">
+                    <?php
+                        foreach($row_articles as $article){
+                            echo "<a href='./articles.php?articleID=$article->id'><h2>$article->title</h2></a><hr>";
+                        }?>
+                    <!-- <a href=""><h2>BETTING SITES WITH GOOD ODDS</h2></a><hr>
+                    <a href=""><h2>HOW TO STOP LOSING IN SPORT BETTING</h2></a><hr>
+                    <a href="policy.php"><h2>PRIVACY POLICY</h2></a><hr> -->
+                </div>
+            </div>
+        </div>
 
     <!-- Footer -->
     <footer id="footer" class="section footer">
@@ -400,8 +665,8 @@
                 </div>
                 <div class="footer-center">
                     <h3>INFORMATION</h3>
-                    <a href="#">About Us</a>
-                    <a href="#">Privacy Policy</a>
+                    <a href="./about.php">About Us</a>
+                    <a href="policy.php">Privacy Policy</a>
                     <a href="#">Terms & Conditions</a>
                     <a href="#">Contact Us</a>
                     <a href="#">Site Map</a>

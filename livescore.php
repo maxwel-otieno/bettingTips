@@ -48,7 +48,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,900;1,600&display=swap" rel="stylesheet">
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="./css/stylesheet.css">
-    <title>Tips</title>
+    <title>Bet3ways | Livescore</title>
 
     <style>
         @media only screen and (max-width: 768px){
@@ -65,12 +65,12 @@
         <nav class="nav">
             <div class="navigation container">
                 <div class="logo">
-                    <h1>Betting <span style="color: brown; font-size: 25dp;">Tips</span></h1>
+                    <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
                 </div>
                 <div class="menu">
                     <div class="top-nav">
                         <div class="logo">
-                            <h1>Betting <span style="color: brown; font-size: 25dp;">Tips</span></h1>
+                            <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
                         </div>
                         <div class="close">
                             <i class='bx bx-x' ></i>
@@ -88,13 +88,16 @@
                             <a href="./livescore.php" style="color:brown;" class="nav-link scroll-link">Livescore</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#about" class="nav-link scroll-link">About</a>
+                            <a href="./about.php" class="nav-link scroll-link">About</a>
                         </li>
                         <li class="nav-item">
                             <a href="./login.php" class="nav-link scroll-link">Login</a>
                         </li>
                         <li class="nav-item">
                             <a href="./index.php" class="nav-link scroll-link">Create Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./vipsite.php" class="nav-link scroll-link" style="color: brown; padding: 0.3rem 1.8rem; background-color: gold; border: 1px solid #f4f4f4; font-weight: bold;">VVIP</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a href="cart.html" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
@@ -343,8 +346,8 @@
                 </div> -->
                 <div class="footer-center">
                     <h3>INFORMATION</h3>
-                    <a href="#">About Us</a>
-                    <a href="#">Privacy Policy</a>
+                    <a href="./about.php">About Us</a>
+                    <a href="policy.php">Privacy Policy</a>
                     <a href="#">Terms & Conditions</a>
                     <a href="#">Contact Us</a>
                     <a href="#">Site Map</a>

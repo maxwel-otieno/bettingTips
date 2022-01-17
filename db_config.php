@@ -67,10 +67,75 @@ try {
 
 
   //fetch articles
-  $stmt_articles = $pdo->prepare("SELECT * FROM articles");
+  $stmt_articles = $pdo->prepare("SELECT * FROM articles ORDER BY title LIMIT 5");
   $stmt_articles->execute();
   $row_articles = $stmt_articles->fetchAll(PDO::FETCH_OBJ);
 
   //select single article
   $single_article = $pdo->prepare("SELECT * FROM articles WHERE id=?");
+
+
+  //CURL OPERATIONS
+  $APIkey= $row_api->api_key;
+
+  $today_date = date("Y-n-j");
+  $today_day = date('j');
+  // echo "today ".$today_date;
+
+  $yester_day = $today_day - 1;
+  $yester_date = date("Y-n")."-".($yester_day);
+  // echo "Yesterday ".$yester_date;
+
+  $today_day++;
+  $tomorrow_date = date("Y-n")."-".($today_day);
+
+  $curl_options = array(
+
+    //Get football predictions
+    // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
+    // CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$tomorrow_date&APIkey=$APIkey",
+    CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$today_date&APIkey=$APIkey",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HEADER => false,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_CONNECTTIMEOUT => 5
+    );
+    $curl = curl_init();
+    curl_setopt_array( $curl, $curl_options );
+    $prediction = curl_exec( $curl );
+    $prediction = (array) json_decode($prediction);
+    // var_dump($prediction);
+
+
+    // Get countries
+    $curl_options = array(
+      // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
+      CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_countries&APIkey=$APIkey",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_HEADER => false,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_CONNECTTIMEOUT => 5
+      );
+  
+      $curl = curl_init();
+      curl_setopt_array( $curl, $curl_options );
+      $countries = curl_exec( $curl );
+  
+      $countries = (array) json_decode($countries);
+
+
+      
+      $curl_options = array(
+        CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$yester_date&to=$today_date&APIkey=$APIkey",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HEADER => false,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_CONNECTTIMEOUT => 5
+        );
+
+        $curl = curl_init();
+        curl_setopt_array( $curl, $curl_options );
+        $result = curl_exec( $curl );
+
+        $result = (array) json_decode($result);
 ?>
