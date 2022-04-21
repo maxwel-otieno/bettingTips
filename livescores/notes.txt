@@ -1,0 +1,18 @@
+add the following line to crontab, e.g in cmd crontab -l
+    */3 * * * * "curl https://bet3ways.com/livescores/scrape_livescore.php"
+
+----------------------------------
+IF THERE ARE ssl certificates errors, add the following to php.ini section 
+//use the correct path to cacert.pem(included with the source)
+
+[curl]
+; A default value for the CURLOPT_CAINFO option. This is required to be an
+; absolute path.
+curl.cainfo=C:\wamp64\www\livescores\cert\cacert.pem
+--------------------------
+
+
+Create database called, livescores
+import livescores.sql
+Note that I have added an extra column, rank in livescore table
+--------------------------

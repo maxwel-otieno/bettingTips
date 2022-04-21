@@ -373,42 +373,46 @@
             <div class="row mb-4">
                 <div class="col-lg-8 col-md-12">
                     <div class="articles">  
-                        What are the best ways to earn from home?
-                        As you’ll learn below, there are many ways to make money from home.
+                        <h1 style="color: brown;">What are the best ways to earn from home?</h1>
+                        <p>As you’ll learn below, there are many ways to make money from home.<br>
 
                         Some that are listed below include:
-                        1.Starting a blog
-                        2.Selling on Amazon
-                        3.Becoming an online tutor
-                        4.Becoming a virtual assistant
-                        5.Writing an eBook
-                        6.Starting an online store
-                        7.Proofreading
-                        8.Bookkeeping
-                        9.Flipping items for profit
-                        10.Freelance writing
-                        11.Teaching English from home
-                        12Becoming a transcriptionist
-                        Plus, much more! There are many ways to earn money from home using the internet.
+                        <ul>
+                        <li>1.Starting a blog</li>
+                        <li>2.Selling on Amazon</li>
+                        <li>3.Becoming an online tutor</li>
+                        <li>4.Becoming a virtual assistant</li>
+                        <li>5.Writing an eBook</li>
+                        <li>6.Starting an online store</li>
+                        <li>7.Proofreading</li>
+                        <li>8.Bookkeeping</li>
+                        <li>9.Flipping items for profit</li>
+                        <li>10.Freelance writing</li>
+                        <li>11.Teaching English from home</li>
+                        <li>12.Becoming a transcriptionist</li>
+                        </ul>
+                        Plus, much more! There are many ways to earn money from home using the internet.</p>
 
-                        Start a blog to make a living from home.
-                        Okay, so this one isn’t an interview I did with someone else, it’s my personal story! I had to include it because it’s my favorite way to earn money from home. This is definitely one of the real ways to make money from home because I do it.
+                        <h2 style="color: brown">Start a blog to make a living from home.</h2>
+                        <p>Okay, so this one isn’t an interview I did with someone else, it’s my personal story! I had to include it because it’s my favorite way to earn money from home. This is definitely one of the real ways to make money from home because I do it.
                         I created Making Sense of Cents around 7 years ago, and since then, I have earned over $4,000,000 with my blog and over $1,500,000 just in one year.
                         Blogging changed my life for the better, and it allows me to earn thousands of dollars a month, all by doing something that I love.
-                        My blog was created on a whim as a way to track my own personal finance progress. And, when I started in 2011, I honestly didn’t even know that people could make money blogging!
-                        I did not create Making Sense of Cents to earn money from home, but after only six months, I began to make money.
+                        My blog was created on a whim as a way to track my own personal finance progress. And, when I started in 2011, I honestly didn’t even know that people could make money blogging!<br>
+                        I did not create Making Sense of Cents to earn money from home, but after only six months, I began to make money.</p>
 
-                        Blogging is quite affordable to start, and it’s easy as well.
-                        Blogging has allowed me to take control of my finances and earn more money. It means I can work from home, travel whenever I want, have a flexible schedule, and more! As you can see, blogging completely changed my life for the better, and if you are interested, I urge you to learn how to start your own.
-                        You can easily learn how to create a blog with my free How To Start a Blog Course.
-                        Here’s a quick outline of what you will learn:
-                        Day 1: Reasons you should start a blog.
-                        Day 2: How to determine what to blog about.
-                        Day 3: How to create your blog. In this lesson, you will learn how to start a blog on WordPress. My tutorial makes it very easy to build a blog.
-                        Day 4: How to make money blogging.
-                        Day 5: My tips for making passive income from blogging.
-                        Day 6: How to grow your traffic and followers.
-                        Day 7: Miscellaneous blogging tips that will help you be successful.
+                        <h3>Blogging is quite affordable to start, and it’s easy as well.</h3>
+                        <p>Blogging has allowed me to take control of my finances and earn more money. It means I can work from home, travel whenever I want, have a flexible schedule, and more! As you can see, blogging completely changed my life for the better, and if you are interested, I urge you to learn how to start your own.
+                        You can easily learn how to create a blog with free 'How To Start a Blog' Courses available online.<br>
+                        Here’s a quick outline of what you should make sure to learn about:
+                        <ul>
+                        <li>Day 1: Reasons you should start a blog.</li>
+                        <li>Day 2: How to determine what to blog about.</li>
+                        <li>Day 3: How to create your blog. In this lesson, you will learn how to start a blog on WordPress. My tutorial makes it very easy to build a blog.</li>
+                        <li>Day 4: How to make money blogging.</li>
+                        <li>Day 5: My tips for making passive income from blogging.</li>
+                        <li>Day 6: How to grow your traffic and followers.</li>
+                        <li>Day 7: Miscellaneous blogging tips that will help you be successful.</li>
+                        </ul>
                         How To Start A Blog FREE Email Course
                         In this free course, I show you how to create a blog easily, from the technical side (it's easy - trust me!) all the way to earning your first income and attracting readers. Join now!
 

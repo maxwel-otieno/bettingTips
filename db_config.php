@@ -5,6 +5,52 @@ $host = 'localhost';
 $dbuser = 'root';
 $pass = '';
 
+$footer = '<footer id="footer" class="section footer">
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-center">
+                <h3>INFORMATION</h3>
+                <a href="./about.php">About Us</a>
+                <a href="policy.php">Privacy Policy</a>
+            </div>
+            <div class="footer-center">
+                <br id="notShow"/>
+                <a href="#">Terms & Conditions</a>
+                <a href="articles.php?articleID=1#contact">Contact Us</a>
+            </div>
+            <div class="footer-center">
+                <h3>CONTACT US</h3>
+                <div>
+                    <span>
+                    <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                    bet3ways@gmail.com
+                </div>
+                <div>
+                    <span>
+                    <i class="far fa-envelope"></i>
+                    </span>
+                    bet3ways@outlook.com
+                </div>
+            </div>
+            <div class="footer-center">
+            <br id="notShow"/>
+                <div>
+                    <span>
+                    <i class="fas fa-phone"></i>
+                    </span>
+                    <a href="https://bet3ways.com/">https://bet3ways.com/</a>
+                </div>
+                <div>
+                    <span>
+                    <i class="far fa-paper-plane"></i>
+                    </span>
+                    <a href="https://t.me/bet3ways" target="_blank">https://t.me/bet3ways</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>';
 
 try {
     $dsn = 'mysql: host='.$host.';dbname='.$dbname;
@@ -89,22 +135,30 @@ try {
   $today_day++;
   $tomorrow_date = date("Y-n")."-".($today_day);
 
+  // echo $today_date;
+  // $url = "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$today_date&APIkey=$APIkey";
+  // $ch = curl_init($url);
+  // curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+  // $prediction = curl_exec($ch);
+  // curl_close($ch);
+  // return $response;
+
   $curl_options = array(
 
-    //Get football predictions
-    // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
-    // CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$tomorrow_date&APIkey=$APIkey",
+  //   //Get football predictions
+  //   // CURLOPT_URL => "https://jsonplaceholder.typicode.com/posts?userId=1",
+  //   // CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$tomorrow_date&APIkey=$APIkey",
     CURLOPT_URL => "https://apiv3.apifootball.com/?action=get_predictions&from=$today_date&to=$today_date&APIkey=$APIkey",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HEADER => false,
     CURLOPT_TIMEOUT => 30,
     CURLOPT_CONNECTTIMEOUT => 5
-    );
-    $curl = curl_init();
-    curl_setopt_array( $curl, $curl_options );
-    $prediction = curl_exec( $curl );
-    $prediction = (array) json_decode($prediction);
-    // var_dump($prediction);
+  );
+  $curl = curl_init();
+  curl_setopt_array( $curl, $curl_options );
+  $prediction = curl_exec( $curl );
+  $prediction = (array) json_decode($prediction);
+  // var_dump($prediction);
 
 
     // Get countries
@@ -122,7 +176,6 @@ try {
       $countries = curl_exec( $curl );
   
       $countries = (array) json_decode($countries);
-
 
       
       $curl_options = array(

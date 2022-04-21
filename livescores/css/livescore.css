@@ -1,0 +1,59 @@
+div.header {
+    background-color:#ddd;
+}
+
+table.livescore {
+    border-collapse: collapse;
+    width : 100%;
+}
+table.livescore tr.bordert-top {
+   border-top: 1.5px solid #f4f4f4;
+   /* margin-bottom: 20rem !important; */
+}
+
+table.livescore {
+    text-align : left;
+}
+
+table.livescore td.l1{
+    width : 10%;
+    color: red;
+    font-size: 16px;
+}
+
+table.livescore td.l1_live{
+    width : 10%;
+    color: red;
+}
+
+table.livescore td.l1{
+    width : 10%;
+    color: black;
+}
+
+table.livescore td.l2{
+    width : 80%;
+}
+table.livescore td.l3{
+    text-align : right;
+}
+
+.title {
+    text-align : center;
+}
+
+#edt_search {
+    width: 60%;
+    min-width : 150px;
+    margin-right: 3rem;
+}
+
+#chk_live {
+    vertical-align : middle;
+}
+
+#btn_submit {
+    width : 30%;
+    min-width : 60px;
+    margin-left: 2rem;
+}

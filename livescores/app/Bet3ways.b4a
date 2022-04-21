@@ -1,0 +1,75 @@
+﻿Build1=Default,com.threeways.hojak
+File1=bet3ways.png
+File2=betthree.bal
+File3=main.bal
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+Group=Default Group
+Library1=core
+Library2=xui
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~~\n~CreateResource(values, colors.xml,~\n~<resources>~\n~    <color name="actionbar">#FF2D48AF</color>~\n~   <color name="statusbar">#FF162661</color>~\n~   <color name="textColorPrimary">#ffffffff</color>~\n~   <color name="navigationBar">#FF162681</color>~\n~</resources>~\n~)~\n~CreateResource(values-v20, theme.xml,~\n~<resources>~\n~    <style name="LightTheme" parent="@android:style/Theme.Material.Light">~\n~        <item name="android:colorPrimary">@color/actionbar</item>~\n~        <item name="android:colorPrimaryDark">@color/statusbar</item>~\n~        <item name="android:textColorPrimary">@color/textColorPrimary</item>~\n~    </style>~\n~</resources>~\n~)~\n~CreateResource(values-v14, theme.xml,~\n~<resources>~\n~    <style name="LightTheme" parent="@android:style/Theme.Holo.Light">~\n~       <item name="android:actionBarStyle">@style/CustomActionBarStyle</item>~\n~    </style>~\n~   <style name="CustomActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">~\n~       <item name="android:background">@color/actionbar</item>~\n~   </style>~\n~</resources>~\n~)~\n~
+Module1=betthree
+Module2=Starter
+NumberOfFiles=3
+NumberOfLibraries=2
+NumberOfModules=2
+Version=11
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: Bet3ways
+	#VersionCode: 2
+	#VersionName: 2
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+#SignKeyFile : ../bet3ways.keystore
+#SignKeyPassword: betthreethree
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private xui As XUI
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	Private lbl_info As Label
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("main")
+	Activity.Title = "Bet3ways"
+	
+	Dim cs As CSBuilder
+	cs = cs.Initialize.Color(Colors.Red).RelativeSize(1.5).Append($"Free football prediction website"$).PopAll.Color(Colors.White).Append($"
+Bet3ways provides Free football predictions, Tips of the day, Single Bets, e.t.c.. Bet3ways Is the best source of free football tips And one of the top best football prediction site on the internet that provides sure soccer predictions.
+
+We provide you with a wide range of accurate predictions you can rely on. Our unique interface makes it easy For the users To browse easily both on desktop And mobile For online sports gambling. If you are looking For sites that predict football matches correctly, Bet3ways Is the Best Football Prediction Website in the world.
+	"$).PopAll
+	
+	lbl_info.Text = cs
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub Button1_Click
+	xui.MsgboxAsync("Hello world!", "B4X")
+End Sub
+
+Private Sub btn_proceed_Click
+	StartActivity(betthree)
+End Sub

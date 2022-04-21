@@ -1,10 +1,16 @@
 <?php 
     include 'db_config.php';
+    session_start();
+    // echo $_SESSION['username'];
 
     $Err = "";
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         $ID = $_GET['id'];
+    }
+
+    if(!isset($_SESSION['username'])){
+        header('location: login.php');
     }
 
 ?>
@@ -32,6 +38,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,900;1,600&display=swap" rel="stylesheet">
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="./css/stylesheet.css">
+    
+    <!-- logo -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/ball_2.png">
     <title>Bet3ways | VVIP</title>
 
     <style>
@@ -112,6 +121,27 @@
             width: 10%;
             background-color: #f4f4f4;
         }
+        #football{
+            width:5%; height:5%;
+        }
+        @media only screen and (max-width: 1200px){
+            #football{
+                width:7%; height:7%;
+            }
+        }
+        
+        @media only screen and (max-width: 1024px){   
+            #football{
+                width:7%; height:7%;
+            }
+        }
+
+        @media only screen and (max-width: 978px){
+            #football{
+                width:8%; height:8%;
+            }
+        }
+
         @media only screen and (max-width: 768px){
             #notShow{
                 display: none;
@@ -126,6 +156,9 @@
             .advert_promo{
                 width: 100%;
                 min-height: 600px;
+            }
+            #football{
+                width:7%; height:7%;
             }
         }
         @media only screen and (max-width: 567px){
@@ -169,6 +202,9 @@
             .vip-contact img{
                 width: 15% !important;
             }
+            #football{
+                width:14%; height: 14%;
+            }
         }
     </style>
 </head>
@@ -179,12 +215,17 @@
         <nav class="nav">
             <div class="navigation container">
                 <div class="logo">
-                    <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
+                    <div class="d-flex">
+                        <img src="./images/ball_2.png" alt="" id="football"><h1 style="font-size:32px; font-weight: bold;">Bet3<span style="color: brown; font-size: 29dp;">Ways</span></h1></img>
+                    </div>
+                    <!-- <img src="./images/Bet3ways_logo.jpg" alt="Bet3Ways.com" width="35%"> -->
                 </div>
                 <div class="menu">
                     <div class="top-nav">
                         <div class="logo">
-                            <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
+                            <div class="d-flex">
+                                <img src="./images/ball_2.png" alt="" id="football"><h1 style="font-size:32px; font-weight: bold;">Bet3<span style="color: brown; font-size: 29dp;">Ways</span></h1></img>
+                            </div>
                         </div>
                         <div class="close">
                             <i class='bx bx-x' ></i>
@@ -198,24 +239,25 @@
                         <li class="nav-item">
                             <a href="./tips.php" class="nav-link scroll-link">Tips</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="./livescore.php" class="nav-link scroll-link">Livescore</a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <li class="nav-item active">
                             <a href="./about.php" class="nav-link scroll-link">About</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./login.php" class="nav-link scroll-link">Login</a>
+                            <a href="./articles.php?articleID=<?php echo rand(1, 5);?>" class="nav-link scroll-link">Blogs</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index.php" class="nav-link scroll-link">Create Account</a>
-                        </li>
-                        <li class="nav-item active">
                             <a href="./vipsite.php" class="nav-link scroll-link" style="color: brown; padding: 0.3rem 1.8rem; background-color: gold; border: 1px solid #f4f4f4; font-weight: bold;">VVIP</a>
                         </li>
                         <!-- <li class="nav-item">
-                            <a href="cart.html" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
+                            <a href="cart.html" class="nav-link icon"></a>
                         </li> -->
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item">
+                            <a href="./logout.php" class="nav-link scroll-link">Logout</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -246,7 +288,7 @@
                     <li class="nav-item">
                         <a href="./vipsite.php?id=3" class="nav-link scroll-link">Make payment</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="#about" class="nav-link scroll-link">Upgrade Plan</a>
                     </li>
                     <li class="nav-item">
@@ -254,7 +296,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="./index.php" class="nav-link scroll-link">Betting Glossary</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
@@ -263,17 +305,25 @@
                     <h1 class="viphead">Welcome to the VIP section</h1><br>
                     <?php
                         if ($ID == '1'){?>                            
-                            <p><span class="span_1">Name :</span> <span class="mySpan"> Maxwel Oduor Otieno</span></p>
-                            <p><span class="span_1">Email Address :</span> <span class="mySpan"> admin@gmail.com</span></p>
-                            <p><span class="span_1">User ID :</span> <span class="mySpan"> <?php echo rand(100000000, 1000000000);?></span></p>
-                            <p><span class="span_1">Plan :</span> <span class="mySpan"> Regular</span></p>
+                            <!-- <p><span class="span_1">Name :</span> <span class="mySpan"> Maxwel Oduor Otieno</span></p>
+                            <p><span class="span_1">Email Address :</span> <span class="mySpan"> admin@gmail.com</span></p> -->
+                            <!-- <p><span class="span_1">User ID :</span> <span class="mySpan">  -->
+                                <?php 
+                                // echo rand(100000000, 1000000000);
+                                ?>
+                            <!-- </span></p> -->
+                            <!-- <p><span class="span_1">Plan :</span> <span class="mySpan"> Regular</span></p> -->
 
                             <br><br>
                             <h1 class="vip_h1">Subscription Details</h1>
-                            <p><span class="span_1">Name :</span> <span class="mySpan"> Maxwel Oduor Otieno</span></p>
-                            <p><span class="span_1">Email Address :</span> <span class="mySpan"> admin@gmail.com</span></p>
-                            <p><span class="span_1">User ID :</span> <span class="mySpan"> <?php echo rand(100000000, 1000000000);?></span></p>
-                            <p><span class="span_1">Plan :</span> <span class="mySpan"> Regular</span></p>
+                            <!-- <p><span class="span_1">Name :</span> <span class="mySpan"> Maxwel Oduor Otieno</span></p> -->
+                            <!-- <p><span class="span_1">Email Address :</span> <span class="mySpan"> admin@gmail.com</span></p> -->
+                            <p><span class="span_1">User ID :</span> <span class="mySpan">
+                                 <?php 
+                            // echo rand(100000000, 1000000000);
+                            ?>
+                            <!-- </span></p> -->
+                            <!-- <p><span class="span_1">Plan :</span> <span class="mySpan"> Regular</span></p> -->
                         <?php }else if($ID == '2'){ ?>
 
                         <?php }else if($ID == '3') {?>
@@ -341,7 +391,7 @@
                                         <p style="font-size: 18px;">Email : <b>bet3ways@outlook.com</b></p>
                                     </div>
                                     <div class="col-md-6 text-center">
-                                        <p style="font-size: 18px;"><img src="./images/telegram.png" alt="telegram" width="60px">  <strong>@nondiz</strong></p>
+                                        <p style="font-size: 18px;"><img src="./images/telegram.png" alt="telegram" width="60px">  <a href="https://t.me/bet3ways" style="text-decoration: none;"><strong>https://t.me/bet3ways</strong></a></p>
                                         <p style="font-size: 18px;">Email : <strong>bet3ways@gmail.com</strong></p>
                                     </div>
                                 </div>
@@ -498,7 +548,7 @@
                                     <p style="font-size: 18px;">Email : <b>bet3ways@outlook.com</b></p><br>
                                 </div>
                                 <div class="col-sm-6 text-center">
-                                    <p style="font-size: 18px;"><img src="./images/telegram.png" alt="telegram" width="60px">  <strong>@nondiz</strong></p>
+                                    <p style="font-size: 18px;"><img src="./images/telegram.png" alt="telegram" width="60px">  <a href="https://t.me/bet3ways" style="text-decoration: none;"><strong>https://t.me/bet3ways</strong></a></p>
                                     <p style="font-size: 18px;">Email : <strong>bet3ways@gmail.com</strong></p><br>
                                 </div>
                             </div>
@@ -527,7 +577,7 @@
                 <div class="col-6 col-lg-2" style="text-align: center; margin-bottom: 3rem;"><img src="./images/bitcoin_1.png" alt="img here"></div>
                 <div class="col-6 col-lg-2" style="text-align: center; margin-bottom: 3rem;"><img src="./images/skrill.png"></div>
                 <div class="col-6 col-lg-2" style="text-align: center; margin-bottom: 3rem;"><img src="./images/M-pesa.jpg"></div>
-                <div class="col-6 col-lg-2" style="text-align: center; margin-bottom: 3rem;"><img src="./images/W_union.jpg"></div>
+                <div class="col-6 col-lg-2" style="text-align: center; margin-bottom: 3rem;"><img src="./images/w_union.jpg"></div>
                 <div class="col-6 col-lg-2" style="text-align: center; margin-bottom: 3rem;"><img src="./images/paypal.jpg"></div>
                 <div class="col-6 col-lg-2" style="text-align: center; margin-bottom: 3rem;"><img src="./images/master_card.png"></div>
             </div>
@@ -539,7 +589,7 @@
                         <p style="font-size: 18px;">Email : <b>bet3ways@outlook.com</b></p><br>
                     </div>
                     <div class="col-md-6 text-center">
-                        <p style="font-size: 18px;"><img src="./images/telegram.png" alt="telegram" width="60px">  <strong>@nondiz</strong></p>
+                        <p style="font-size: 18px;"><img src="./images/telegram.png" alt="telegram" width="60px">  <a href="https://t.me/bet3ways" style="text-decoration: none;"><strong>https://t.me/bet3ways</strong></a></p>
                         <p style="font-size: 18px;">Email : <strong>bet3ways@gmail.com</strong></p><br>
                     </div>
                 </div>
@@ -547,62 +597,9 @@
         </div>
 
     <!-- Footer -->
-    <footer id="footer" class="section footer">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-center">
-                    <h3>EXTRAS</h3>
-                    <a href="#">Brands</a>
-                    <a href="#">Gift Certificates</a>
-                    <a href="#">Affiliate</a>
-                    <a href="#">Specials</a>
-                    <a href="#">Site Map</a>
-                </div>
-                <div class="footer-center">
-                    <h3>INFORMATION</h3>
-                    <a href="./about.php">About Us</a>
-                    <a href="policy.php">Privacy Policy</a>
-                    <a href="#">Terms & Conditions</a>
-                    <a href="#">Contact Us</a>
-                    <a href="#">Site Map</a>
-                </div>
-                <div class="footer-center">
-                    <h3>MY ACCOUNT</h3>
-                    <a href="#">My Account</a>
-                    <a href="#">Order History</a>
-                    <a href="#">Wish List</a>
-                    <a href="#">Newsletter</a>
-                    <a href="#">Returns</a>
-                </div>
-                <div class="footer-center">
-                    <h3>CONTACT US</h3>
-                <div>
-                    <span>
-                    <i class="fas fa-map-marker-alt"></i>
-                    </span>
-                    42 Dream House, Dreammy street, 7131 Dreamville, USA
-                </div>
-                <div>
-                    <span>
-                    <i class="far fa-envelope"></i>
-                    </span>
-                    company@gmail.com
-                </div>
-                <div>
-                    <span>
-                    <i class="fas fa-phone"></i>
-                    </span>
-                    456-456-4512
-                </div>
-                <div>
-                    <span>
-                    <i class="far fa-paper-plane"></i>
-                    </span>
-                    Dream City, USA
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php 
+        echo $footer;
+    ?>
     <script>
         function myFunction(){
             console.log("Clicked");

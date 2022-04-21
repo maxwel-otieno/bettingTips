@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bet3ways | Policy</title>
     <!-- favicon -->
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <!-- Box icons -->
@@ -13,7 +13,7 @@
     
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <!-- <link rel="stylesheet" href="fonts/icomoon/style.css"> -->
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
@@ -22,11 +22,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,900;1,600&display=swap" rel="stylesheet">
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="./css/stylesheet.css">
+    
+    <!-- logo -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/ball_2.png">
 
     <style>
+        .active a{
+            color: brown;
+        }
+        .h1policy{
+            font-size: 35px;
+        }
+        #football{
+            width:5% !important; height:5% !important;
+            padding-top: 5px;s
+        }
+        @media only screen and (max-width: 1200px){
+            #football{
+                width:5% !important; height: 7% !important;
+                padding-top: 4px !important;
+            }
+        }
+        @media only screen and (max-width: 900px){
+            #football{
+                width:8% !important; height: 9% !important;
+                padding-top: 5px !important;
+            }
+        }
         @media only screen and (max-width: 768px){
             #notShow{
                 display: none;
+            }
+            #football{
+                width:6% !important; height: 9% !important;
+                /* padding-top: 5px !important; */
+            }
+        }
+        @media only screen and (max-width: 567px){
+            .h1policy{
+                font-size: 28px;
+                margin-bottom: 3rem;
+            }
+            #football{
+                width:8% !important; height: 11% !important;
+                padding-top: 3px !important;
             }
         }
     </style>
@@ -37,13 +76,13 @@
         <!-- Navigation -->
         <nav class="nav" style="background-color:black; color: white;">
             <div class="navigation container">
-                <div class="logo">
-                    <h1>Betting <span style="color: brown; font-size: 25dp;">Tips</span></h1>
+                <div class="d-flex">
+                    <img src="./images/ball_2.png" alt="" id="football" style="padding-top:2px;"><h1 style="font-size:32px; font-weight: bold;">Bet3<span style="color: brown; font-size: 29dp;">Ways</span></h1></img>
                 </div>
                 <div class="menu">
                     <div class="top-nav">
-                        <div class="logo">
-                            <h1>Betting <span style="color: brown; font-size: 25dp;">Tips</span></h1>
+                        <div class="d-flex">
+                            <img src="./images/ball_2.png" alt="" id="football" style="padding-top:2px;"><h1 style="font-size:32px; font-weight: bold;">Bet3<span style="color: brown; font-size: 29dp;">Ways</span></h1></img>
                         </div>
                         <div class="close">
                             <i class='bx bx-x' ></i>
@@ -52,32 +91,31 @@
 
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="index.php" class="nav-link scroll-link">Home</a>
+                            <a href="#home" class="nav-link scroll-link">Home</a>
                         </li>
                         <li class="nav-item">
                             <a href="./tips.php" class="nav-link scroll-link">Tips</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./livescore.php" class="nav-link scroll-link">Livescore</a>
+                            <a href="./livescores/index.php" class="nav-link scroll-link">Livescore</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="./about.php" class="nav-link scroll-link">About</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#about" class="nav-link scroll-link">About</a>
+                            <a href="./articles.php?articleID=<?php echo rand(1, 5);?>" class="nav-link scroll-link">Blogs</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="./login.php" class="nav-link scroll-link">Login</a>
-                        </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="./index.php" class="nav-link scroll-link">Create Account</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a href="./vipsite.php" class="nav-link scroll-link" style="color: white; font-size: 16px; padding: 0.5rem 2rem; background-color: brown;border-radius: 20px;">VVIP</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a href="cart.html" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
                         </li> -->
                     </ul>
                 </div>
-                
-                <a href="cart.html" class="cart-icon">
-                    <i class="bx bx-shopping-bag"></i>
-                </a>
 
                 <div class="hamburger">
                     <i class="bx bx-menu"></i>
@@ -88,7 +126,7 @@
 
     <div class="container mt-5">
         <div class="justify-content-center d-flex">
-            <h1 style="font-size: 40px;">Privacy Policy for bet3ways</h1>
+            <h1 class="h1policy">Privacy Policy for bet3ways</h1>
         </div>
 
         <h1>Privacy Policy</h1>
@@ -134,8 +172,8 @@
 <li>
 <p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>
 </li>
-</ul>
-<h1>Collecting and Using Your Personal Data</h1>
+</ul><br><br>
+<h1 class="h1policy">Collecting and Using Your Personal Data</h1>
 <h2>Types of Data Collected</h2>
 <h3>Personal Data</h3>
 <p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>

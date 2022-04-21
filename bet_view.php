@@ -48,6 +48,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,900;1,600&display=swap" rel="stylesheet">
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="./css/stylesheet.css">
+    
+    <!-- logo -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/ball_2.png">
     <title>Bet3ways | Tips</title>
 
     <style>
@@ -72,23 +75,24 @@
 
         /* PROMO */
         .advert_promo{
-            width: 100%;
+            width: 70%;
             background-color:orange;
             border-radius:5px;
-            /* margin: auto; */
+            margin: auto;
             margin-top: 3rem;
-            padding: 10px;
+            padding: 5px;
             margin-bottom: 4rem;
         }
         .advert_promo img{
-            width: 30rem;
-            margin-top: -10px;
+            width: 20rem;
+            margin-top: 22px;
         }
         #promo_code{
             background-color: orange;
-            border: 4px solid grey;
+            border: 3px solid grey;
             color: grey;
-            font-size: 16px;
+            padding: 1rem 3rem !important;
+            font-size: 13px;
         }
         #promo_code:hover{
             background-color: #f4f4f4;
@@ -98,8 +102,8 @@
         .bonus_amt{
             padding-top: 4rem;
             color: #C13333; 
-            font-size: 31px; 
-            font-weight: 500;
+            font-size: 23px; 
+            font-weight: 550;
             letter-spacing: 1.5px;
         }
         #get_bonus{
@@ -110,17 +114,34 @@
             margin-bottom: 5%;
             background-color:#C13333;
             border-radius: 30px;
-            font-size: 18px;
+            font-size: 16px;
             text-decoration: none; 
             font-family: 'Times New Roman', Times, serif;
         }
         #get_bonus:hover{
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
+        #football{
+            width:5%; height:5%;
+        }
+        @media only screen and (max-width: 1200px){
+            #football{
+                width:7%; height:7%;
+            }
+        }
+        
+        @media only screen and (max-width: 1024px){     
+            #football{
+                width:%; height:7%;
+            }
+        }
         @media only screen and (max-width: 978px){            
             .advert_promo{
                 width: 100%;
                 /* min-height: 400px; */
+            }
+            #football{
+                width:8%; height:8%;
             }
         }
 
@@ -131,6 +152,9 @@
             .headers_min{
                 font-size: 14px;
                 /* color: white; */
+            }
+            #football{
+                width:7%; height:7%;
             }
         }
 
@@ -183,6 +207,9 @@
                 text-align: center;
                 padding: 5px 10px;
             }
+            #football{
+                width:14%; height: 14%;
+            }
         }
     </style>
 </head>
@@ -193,12 +220,16 @@
         <nav class="nav">
             <div class="navigation container">
                 <div class="logo">
-                    <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
+                    <div class="d-flex">
+                        <img src="./images/ball_2.png" alt="" id="football"><h1 style="font-size:32px; font-weight: bold;">Bet3<span style="color: brown; font-size: 29dp;">Ways</span></h1></img>
+                    </div>
                 </div>
                 <div class="menu">
                     <div class="top-nav">
                         <div class="logo">
-                            <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
+                            <div class="d-flex">
+                                <img src="./images/ball_2.png" alt="" id="football"><h1 style="font-size:32px; font-weight: bold;">Bet3<span style="color: brown; font-size: 29dp;">Ways</span></h1></img>
+                            </div>
                         </div>
                         <div class="close">
                             <i class='bx bx-x' ></i>
@@ -212,20 +243,23 @@
                         <li class="nav-item">
                             <a href="./tips.php" style="color:brown;" class="nav-link scroll-link">Tips</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="./livescore.php" class="nav-link scroll-link">Livescore</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="./about.php" class="nav-link scroll-link">About</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./login.php" class="nav-link scroll-link">Login</a>
+                            <a href="./articles.php?articleID=<?php echo rand(1, 5);?>" class="nav-link scroll-link">Blogs</a>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a href="./login.php" class="nav-link scroll-link">Login</a>
+                        </li> -->
                         <!-- <li class="nav-item">
                             <a href="./index.php" class="nav-link scroll-link">Create Account</a>
                         </li> -->
                         <li class="nav-item">
-                            <a href="./vipsite.php" class="nav-link scroll-link" style="color: brown; padding: 0.3rem 1.8rem; background-color: gold; border: 1px solid #f4f4f4; font-weight: bold;">VVIP</a>
+                           <a href="../vipsite.php" class="nav-link scroll-link" style="color: white; font-size: 16px; padding: 0.5rem 2rem; background-color: brown;border-radius: 20px;">VVIP</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a href="cart.html" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
@@ -319,7 +353,7 @@
     <div style="min-height: 200px; margin-bottom: 100px;" class="mt-5">
         <div class="container">
             <div class="frames">
-            <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='320' height='80' src="https://refpasrasw.world/I?tag=d_723421m_47685c_&site=723421&ad=47685" ></iframe></div>
+            <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='320' height='80' src="https://refbanners.com/I?tag=d_1248161m_47149c_&site=1248161&ad=47149" ></iframe></div>
 
             <div>
                 <?php 
@@ -337,7 +371,7 @@
                                 <div class="col-md-2"></div>
                                 <div class="col-md-8 d-flex justify-content-center align-items-center">
                                     <div class="MySectionToMin">
-                                        <h1 style="font-size: 25px; font-weight: bold;"><?php echo $game_result[$a]->match_hometeam_name; ?> Vs <?php echo $game_result[$a]->match_awayteam_name; ?></h1>
+                                        <h1 style="font-size: 22px; font-weight: bold;"><?php echo $game_result[$a]->match_hometeam_name; ?> Vs <?php echo $game_result[$a]->match_awayteam_name; ?></h1>
                                         <?php $date = $game_result[$a]->match_date; 
                                             $date_array = explode('-', $date);
 
@@ -346,7 +380,7 @@
                                             
                                             $date_month = $arr_month[$date_array[1]-1];
                                         ?>
-                                        <h2 style="font-size: 20px"><?php echo $date_month." ".$date_array[2];?>, <?php echo $date_array[0]; ?></h2>
+                                        <h2 style="font-size: 18px"><?php echo $date_month." ".$date_array[2];?>, <?php echo $date_array[0]; ?></h2>
                                     </div>
                                 </div>
                             </div>
@@ -358,7 +392,7 @@
                     <div class="col-lg-6 p-5">
                         <div class="d-flex justify-content-center">
                             <div>
-                            <a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_" style="cursor: pointer;"><img src="./images/22bet-logo.PNG" alt="" style=""></a><br>
+                            <a href="https://1xbet.co.ke/?tag=d_1248161m_47149c_" style="cursor: pointer;"><img src="./images/1x_bet.png" alt="" style=""></a><br>
                             <!-- <a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_" style="color: brown; font-weight: bold;text-align: center;margin: auto;">Full Review</a><br><hr style="margin: auto;background-color: brown; width: 10%; text-align: center;"> --></div>
                         </div>
                         <!-- <div class="d-flex justify-content-center">
@@ -368,9 +402,9 @@
                     <div class="col-lg-6 p-5">
                         <div class="d-flex justify-content-center">
                             <div>
-                                <h1 class="bonus_amt">GET KSH 200 BONUS</h1>
+                                <h1 class="bonus_amt">GET ₦ 100,000 BONUS</h1>
                                 <div style="text-align: center;">
-                                    <button class="btn" style="" id="promo_code">PROMO CODE : 22_326807</button>
+                                    <button class="btn" style="" id="promo_code">PROMO CODE : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                 </div>
                             </div>
                         </div>
@@ -378,13 +412,13 @@
                     <!-- <div class="col-lg-2"></div> -->
                 </div>
                 <div>
-                    <button class="btn btn-block" id="get_bonus"><a href="https://m.22bet.co.ke/?tag=d_723421m_32751c_" style="text-decoration:none; color: white;">GET YOUR BONUS</a></button>
+                    <button class="btn btn-block" id="get_bonus"><a href="https://1xbet.co.ke/?tag=d_1248161m_47149c_" style="text-decoration:none; color: white;">GET YOUR BONUS</a></button>
                 </div>
             </div>
             
-                            <hr style="background-color: white; height: 4px; margin-top: 3rem; margin-bottom: 5rem;">
+                            <!-- <hr style="background-color: white; height: 4px; margin-top: 3rem; margin-bottom: 5rem;"> -->
                         <div class="d-flex justify-content-center">
-                            <span class="headers_min text-center">MORE TIPS</span>
+                            <span class="text-center mt-5" style="font-size: 27px; margin-bottom: 3rem;">MORE TIPS</span>
                         </div>
 
                             <table class="table table-striped" width="25%">
@@ -392,7 +426,7 @@
                                     <th>Option</th>
                                     <th>Tip</th>
                                 </thead>
-                                <tbody style="font-size: 20px;">
+                                <tbody style="font-size: 17px;">
                                     <tr>
                                         <td style="padding: 10px;">Double Chance</td>
                                         <td><?php  
@@ -459,180 +493,13 @@
                     }
                 ?>
             </div>
-
-            <!-- <div class="row my-5">
-                <div class="col-md-6">
-                    <div style="background-color: #36454f; min-height: 300px; border-radius: 10px; margin-bottom: 10px;"> 
-                        <h1 style="text-align: center; color: #fff700;">Juventus form</h1>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div style="margin: 10px; text-align: center;">
-                                    <h1>Home Games</h1>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <h1>W</h1>
-                                            <p>5</p>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h1>D</h1>
-                                            <p>1</p>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h1>L</h1>
-                                            <p>0</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div style="padding: 20px; text-align: center;">
-                                    <h1 style="weight: bold;">League Position</h1>
-                                    <table class="table float-left" style="border: none;">
-                                        <thead>
-                                            <th>Pos</th>
-                                            <th>MP</th>
-                                            <th>W</th>
-                                            <th>D</th>
-                                            <th>L</th>
-                                            <th>Pts</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>6</td>
-                                                <td>5</td>
-                                                <td>1</td>
-                                                <td>0</td>
-                                                <td>16</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-md-6"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div style="background-color: #36454f; min-height: 300px; margin-bottom: 10px;">
-                        <h1 style="text-align: center; color: #fff700;">Chelsea form</h1>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div style="padding: 20px; text-align: center;">
-                                    <h1>Away Games</h1>
-                                    <h1>W&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  D  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L</h1>
-                                    <p>5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div style="padding: 20px; text-align: center;">
-                                    <h1 style="weight: bold;">League Position</h1>
-                                    <table class="table float-left" style="border: none;">
-                                        <thead>
-                                            <th>Pos</th>
-                                            <th>MP</th>
-                                            <th>W</th>
-                                            <th>D</th>
-                                            <th>L</th>
-                                            <th>Pts</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>6</td>
-                                                <td>5</td>
-                                                <td>1</td>
-                                                <td>0</td>
-                                                <td>16</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-md-6"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div style="background-color: #36454f; min-height: 300px; margin-bottom: 10px;">
-                    <h1 style="text-align: center; color: #fff700;">Juventus Previous matches</h1>
-                </div>
-                </div>
-                <div class="col-md-6">
-                    <div style="background-color: #36454f; min-height: 300px;">
-                        <h1 style="text-align: center; color: #fff700;">Chelsea Previous matches</h1>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 
     <!-- Footer -->
-    <footer id="footer" class="section footer">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-center">
-                    <h3>EXTRAS</h3>
-                    <a href="#">Brands</a>
-                    <a href="#">Gift Certificates</a>
-                    <a href="#">Affiliate</a>
-                    <a href="#">Specials</a>
-                    <a href="#">Site Map</a>
-                </div>
-                <div class="footer-center">
-                    <h3>INFORMATION</h3>
-                    <a href="./about.php">About Us</a>
-                    <a href="policy.php">Privacy Policy</a>
-                    <a href="#">Terms & Conditions</a>
-                    <a href="#">Contact Us</a>
-                    <a href="#">Site Map</a>
-                </div>
-                <div class="footer-center">
-                    <h3>MY ACCOUNT</h3>
-                    <a href="#">My Account</a>
-                    <a href="#">Order History</a>
-                    <a href="#">Wish List</a>
-                    <a href="#">Newsletter</a>
-                    <a href="#">Returns</a>
-                </div>
-                <div class="footer-center">
-                    <h3>CONTACT US</h3>
-                <div>
-                    <span>
-                    <i class="fas fa-map-marker-alt"></i>
-                    </span>
-                    42 Dream House, Dreammy street, 7131 Dreamville, USA
-                </div>
-                <div>
-                    <span>
-                    <i class="far fa-envelope"></i>
-                    </span>
-                    company@gmail.com
-                </div>
-                <div>
-                    <span>
-                    <i class="fas fa-phone"></i>
-                    </span>
-                    456-456-4512
-                </div>
-                <div>
-                    <span>
-                    <i class="far fa-paper-plane"></i>
-                    </span>
-                    Dream City, USA
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php 
+        echo $footer;
+    ?>
     <script>
         function myFunction(){
             console.log("Clicked");

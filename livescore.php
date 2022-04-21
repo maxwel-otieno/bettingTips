@@ -51,9 +51,21 @@
     <title>Bet3ways | Livescore</title>
 
     <style>
+        .nav-list{
+            color: #fff;
+        }
         @media only screen and (max-width: 768px){
             #notShow{
                 display: none;
+            }
+        }
+        
+        @media only screen and (max-width: 567px){
+            #notShow{
+                display: none;
+            }
+            .nav-list{
+                color: #000;
             }
         }
     </style>
@@ -65,12 +77,17 @@
         <nav class="nav">
             <div class="navigation container">
                 <div class="logo">
-                    <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
+                    <div class="d-flex">
+                        <img src="./images/ball_2.png" alt="" id="football" style="padding-top:2px;"><h1 style="font-size:32px; font-weight: bold; color: white;">Bet3<span style="color: brown; font-size: 29dp;">Ways</span></h1></img>
+                    </div>
+                    <!-- <img src="./images/Bet3ways_logo.jpg" alt="Bet3Ways.com" width="35%"> -->
                 </div>
                 <div class="menu">
                     <div class="top-nav">
                         <div class="logo">
-                            <h1>Bet3ways<span style="color: brown; font-size: 25dp;">.com</span></h1>
+                            <div class="d-flex">
+                                <img src="./images/ball_2.png" alt="" id="football"><h1 style="font-size:32px; font-weight: bold; color: white;">Bet3<span style="color: brown; font-size: 29dp;">Ways</span></h1></img>
+                            </div>
                         </div>
                         <div class="close">
                             <i class='bx bx-x' ></i>
@@ -333,62 +350,9 @@
         <!-- <iframe scrolling="no" id="hearthis_at_track_4535954" width="100%" height="150" src="https://app.hearthis.at/embed/4535954/transparent_black/?hcolor=&color=&style=2&block_size=2&block_space=1&background=1&waveform=0&cover=0&autoplay=1&css=" frameborder="0" allowtransparency allow="autoplay"><p>Listen to <a href="https://hearthis.at/ty7cpt3h/new-school-poprb/" target="_blank">New School Pop &amp; R&amp;B (2013 - 2019)</a> <span>by</span><a href="https://hearthis.at/ty7cpt3h/" target="_blank" >DJ KenB</a> <span>on</span> <a href="https://hearthis.at/" target="_blank">hearthis.at</a></p></iframe> -->  
 
     <!-- Footer -->
-    <footer id="footer" class="section footer">
-        <div class="container">
-            <div class="footer-container">
-                <!-- <div class="footer-center">
-                    <h3>EXTRAS</h3>
-                    <a href="#">Brands</a>
-                    <a href="#">Gift Certificates</a>
-                    <a href="#">Affiliate</a>
-                    <a href="#">Specials</a>
-                    <a href="#">Site Map</a>
-                </div> -->
-                <div class="footer-center">
-                    <h3>INFORMATION</h3>
-                    <a href="./about.php">About Us</a>
-                    <a href="policy.php">Privacy Policy</a>
-                    <a href="#">Terms & Conditions</a>
-                    <a href="#">Contact Us</a>
-                    <a href="#">Site Map</a>
-                </div>
-                <div class="footer-center">
-                    <h3>MY ACCOUNT</h3>
-                    <a href="#">Account Details</a>
-                    <!-- <a href="#">Order History</a>
-                    <a href="#">Wish List</a>
-                    <a href="#">Newsletter</a>
-                    <a href="#">Returns</a> -->
-                </div>
-                <div class="footer-center">
-                    <h3>CONTACT US</h3>
-                <div>
-                    <span>
-                    <i class="fas fa-map-marker-alt"></i>
-                    </span>
-                    42 Dream House, Dreammy street, 7131 Dreamville, USA
-                </div>
-                <div>
-                    <span>
-                    <i class="far fa-envelope"></i>
-                    </span>
-                    company@gmail.com
-                </div>
-                <div>
-                    <span>
-                    <i class="fas fa-phone"></i>
-                    </span>
-                    456-456-4512
-                </div>
-                <div>
-                    <span>
-                    <i class="far fa-paper-plane"></i>
-                    </span>
-                    Dream City, USA
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php 
+        echo $footer;
+    ?>
     <script>
         function myFunction(){
             console.log("Clicked");
