@@ -1,0 +1,16 @@
+/* tr:nth-child(even) {
+    background: #CCC ;
+} */
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+}
+
+iframe {
+    height : 100%;
+    width : 100%;
+}

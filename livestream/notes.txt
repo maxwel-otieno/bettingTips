@@ -1,0 +1,7 @@
+add cron entry for livestream/scrape_livestream.php
+    once per day, probably around 2pm when games has been posted.
+
+import livestream.sql
+    This will set up the necessary tables.
+
+Note that only today's games are displayed.
