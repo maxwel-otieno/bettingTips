@@ -17,7 +17,8 @@
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             //echo "Connected successfully";
 
-
+            $stmt_del = $conn->prepare("DELETE FROM $table_name WHERE 1;");
+            $stmt_del->execute();
 
 
             $stmt = $conn->prepare("INSERT INTO $table_name (date,league, team, link, time) VALUES (?,?,?,?, ?);");

@@ -65,6 +65,12 @@
             table tr{
                 padding: 20px 0px;
             }
+            #league{
+                font-size: 18px;
+                color: #AFA8A9;
+                padding-top: 20px;
+                padding-bottom: -10px;
+            }
 
             @media only screen and (max-width: 1200px){            
                 .football{
@@ -154,6 +160,9 @@
                                 <a href="../livescores/index.php" class="nav-link scroll-link">Livescore</a>
                             </li>
                             <li class="nav-item">
+                                <a href="#" class="nav-link scroll-link">Stream</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../about.php" class="nav-link scroll-link">About</a>
                             </li>
                             <li class="nav-item">
@@ -193,29 +202,43 @@
 
                         $data_sql = "SELECT * FROM $table_name";
                         $data_sql = $data_sql . " WHERE date = '" . $date ."'";
-                        $data_sql = $data_sql . " ORDER BY date DESC LIMIT 30;";
+                        $data_sql = $data_sql . " ORDER BY date DESC LIMIT 50;";
+
+                        $num_sql = "SELECT count(*) as `count` FROM $table_name WHERE 1";
+                        $rowNum = $conn->query($num_sql);
+
+                        // print_r($rowNum->fetch());
+                        $my_num = $rowNum->fetch();
+                        // echo "<br>".$my_num['count']/2;
+
+                        // echo mysqli_num_rows($rowNum->fetch());
 
                         $result = $conn->query($data_sql);
                         // output data of each row
-                        echo "<div class = 'row pl-3'>" ;
-                            echo "<div class = 'col-lg-6 pb-5'>" ;
-                                echo "<table class='table-borderless'>"   ;
-                                while($row = $result->fetch()) {
-                                    echo "<tr class='my-2'>";
-                                        echo "<td style='color: #f4f4f4;'>" . $row['league'] . "</td>";
-                                    echo "</tr>" ;
-                                    echo "<tr>" ;
-                                        echo "<td>" . $row['time']   . "</td>" ;
-                                        echo "<td>" . $row['team']   . "</td>" ;
-                                        $play = "play('" . $row['link'] . "')";
-                                        echo "<td class='py-2'><a href='#game'><input type=button value = 'Watch' onclick = \"" . $play . "\" style='padding: 7px 20px;color: white; border-radius: 10px; border: none; background-color: brown; cursor: pointer;'<a></td>"  ;
-                                    echo "</tr>"  ;
-                                }
-                                echo "</table>" ;
-                            echo "</div>"  ;
-                            // echo "<div class='column-sm'></div>";
-                            echo "<div id = 'game' class = 'col-lg-6 pb-5'></div>" ;
-                        echo "</div>" ;
+                    echo "<div class = 'row pl-3'>" ;
+                    echo "<div class = 'col-lg-5 pb-5 pl-5'>" ;
+                        while($row = $result->fetch()) {
+                                echo "<h6 id='league'>" . $row['league'] . "</h6>";
+                            echo "<table class='table-borderless' style='width: 100%;'>"   ;
+                            // echo "<tr class='my-2'>";
+                            //     echo "<td id='league'>" . $row['league'] . "</td>";
+                            // echo "</tr>" ;
+                            echo "<tr id='live'>" ;
+
+                                if($row['time'] == ''){echo "<td style='color: brown; width: 20%;'> `Live </td>" ;}
+                                else{echo "<td style='width: 20%;'>" . $row['time']   . "</td>" ;}
+
+                                echo "<td style='width: 50%;'>" . $row['team']   . "</td>" ;
+                                $play = "play('" . $row['link'] . "')";
+
+                                echo "<td style='width: 20%; text-align: right;' class='py-2'><a href='#game'><input id='btnClick' type=button value = 'Watch' onclick = \"" . $play . "\" style='padding: 7px 20px;color: white; border-radius: 10px; border: none; background-color: brown; cursor: pointer;'<a></td>"  ;
+                            echo "</tr>"  ;
+                            echo "</table>" ;
+                        }
+                    echo "</div> <div class='col-lg-1'></div>"  ;
+                    // echo "<div class='column-sm'></div>";
+                    echo "<div id = 'game' class = 'col-xl-6 pb-5'></div>" ;
+                echo "</div>" ;
                     } catch(PDOException $e) {
                         //echo "Connection failed: " . $e->getMessage();
                     }

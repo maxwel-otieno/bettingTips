@@ -393,6 +393,9 @@
                                     <a href="./livescores/index.php" class="nav-link scroll-link">Livescore</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="./livestream/index.php" class="nav-link scroll-link">Stream</a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="./about.php" class="nav-link scroll-link">About</a>
                                 </li>
                                 <li class="nav-item">
